@@ -1,5 +1,7 @@
+import { BiLeaf } from "react-icons/bi";
+import { GoPeople } from "react-icons/go";
 
-const Stats = ({activeCount}) => {
+const Stats = ({ activeCount }) => {
   return (
     <div className="bg-base-300 py-10 rounded-xl">
       <div className=" text-center">
@@ -18,16 +20,16 @@ const Stats = ({activeCount}) => {
           </div>
         </div>
 
-        <div className="bg-white flex items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
-          <img className="w-20 mr-2" src="/logo.png" alt="" />
+        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
+          <BiLeaf size={50} color="green" />
           <div>
-            <p className="text-3xl font-bold">850</p>
-            <p className="text-secondary">Active Members</p>
+            <p className="text-3xl font-bold">2,450 kg</p>
+            <p className="text-secondary">CO₂ Saved</p>
           </div>
         </div>
 
-        <div className="bg-white flex items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
-          <img className="w-20 mr-2" src="/logo.png" alt="" />
+        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
+          <GoPeople size={54} color="green" />
           <div>
             <p className="text-3xl font-bold">850</p>
             <p className="text-secondary">Active Members</p>

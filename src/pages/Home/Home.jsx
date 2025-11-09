@@ -141,6 +141,46 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* how it works */}
+      <div>
+        <div className="mb-5 text-center">
+          <h2 className="headings">How It Works</h2>
+          <p className="text-secondary mt-2">
+            Three simple steps to start your sustainability journey
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto text-xl font-bold">
+              1
+            </div>
+            <h3 className="font-semibold text-lg">Join a Challenge</h3>
+            <p className="text-secondary">
+              Browse our challenges and pick one that fits your lifestyle and
+              goals
+            </p>
+          </div>
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto text-xl font-bold">
+              2
+            </div>
+            <h3 className="font-semibold text-lg">Track Your Progress</h3>
+            <p className="text-secondary">
+              Log your daily actions and watch your environmental impact grow
+            </p>
+          </div>
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center mx-auto text-xl font-bold">
+              3
+            </div>
+            <h3 className="font-semibold text-lg">Share & Inspire</h3>
+            <p className="text-secondary">
+              Share your journey and tips with the community to inspire others
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

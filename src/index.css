@@ -17,5 +17,5 @@
   @apply opacity-90;
 }
 .headings {
-  @apply text-primary font-bold text-4xl
+  @apply font-bold text-4xl
 }
