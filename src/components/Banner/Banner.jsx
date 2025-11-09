@@ -37,10 +37,10 @@ const Banner = ({ challengeImg }) => {
                 alt={`Challenge ${i + 1}`}
               />
 
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-t from-green-500/30 via-green-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <button className="btn btn-primary text-white font-semibold px-6 rounded-full shadow-lg hover:scale-105 transition-transform">
+                <button className="btn btn-primary text-primary font-semibold px-6 rounded-full shadow-lg hover:scale-105 transition-transform">
                   View Challenge
                 </button>
               </div>

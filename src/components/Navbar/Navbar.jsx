@@ -68,7 +68,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to={"/"} className="btn btn-ghost text-xl">
+          <Link to={"/"} className="btn btn-ghost text-xl font-bold">
             <img className="w-12" src="/logo.png" alt="" />
             EcoTrack
           </Link>
@@ -112,10 +112,10 @@ const Navbar = () => {
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </label>
-          <Link to={"/login"} className="btn">
+          <Link to={"/login"} className="btn btn-primary">
             Login
           </Link>
-          <Link to={"/register"} className="btn">
+          <Link to={"/register"} className="btn btn-primay">
             Register
           </Link>
         </div>
