@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="bg-base-200 border-t border-t-emerald-500">
       <footer className="footer sm:footer-horizontal py-10 container mx-auto justify-between">
-        <div className="">
+        <div>
           <Link
             to={"/"}
             className="btn p-0 btn-ghost text-xl flex items-center"
@@ -55,10 +55,10 @@ const Footer = () => {
         </nav>
       </footer>
 
-      <div className="container mx-auto text-center pb-10 text-sm opacity-70 flex flex-col items-center gap-3">
+      <div className="container mx-auto text-center pb-10 text-sm flex flex-col items-center gap-3">
         <p>
-          Accessibility: This site supports keyboard navigation and
-          high-contrast mode. For help, email
+          Accessibility: This site has theme changing feature for dark and light
+          mode. For help, email
           <a
             href="mailto:rakibhassannayem@gmail.com"
             className="link link-hover ml-1"
@@ -75,6 +75,9 @@ const Footer = () => {
             Terms
           </a>
         </div>
+        <p>
+          Copyright © {new Date().getFullYear()} EcoTrack - All right reserved
+        </p>
       </div>
     </div>
   );
