@@ -14,9 +14,9 @@ const ChallengeCard = ({ challenge }) => {
           <div className="bg-emerald-50 text-secondary rounded-full px-3 py-1 text-sm">{category}</div>
         </h2>
 
-        <p className="text-secondary">{description}</p>
+        <p className="text-secondary text-base">{description}</p>
 
-        <div className="card-actions justify-between text-secondary">
+        <div className="card-actions justify-between text-base text-secondary">
           <div className="flex items-center gap-1">
             <MdOutlineCalendarToday />
             {duration} days
