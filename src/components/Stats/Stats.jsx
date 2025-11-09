@@ -9,7 +9,7 @@ const Stats = ({activeCount}) => {
         </p>
       </div>
 
-      <div className="flex justify-between gap-5 p-5">
+      <div className="flex flex-col md:flex-row justify-between gap-5 p-5">
         <div className="bg-white flex items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
           <img className="w-20 mr-2" src="/logo.png" alt="" />
           <div>

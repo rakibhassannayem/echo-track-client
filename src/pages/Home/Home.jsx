@@ -5,6 +5,8 @@ import ChallengeCard from "../../components/ChallengeCard/ChallengeCard";
 import TipsCard from "../../components/TipsCard/TipsCard";
 import { useEffect, useState } from "react";
 import EventsCard from "../../components/EventsCard/EventsCard";
+import { BiCheckCircle, BiLeaf } from "react-icons/bi";
+import { FaUserSecret } from "react-icons/fa";
 
 const Home = () => {
   const challenges = useLoaderData();
@@ -58,7 +60,7 @@ const Home = () => {
           </p>
         )}
       </div>
-      .{/* Community Tips */}
+      {/* Community Tips */}
       <div className="rounded-xl">
         <div className="mb-5 text-center">
           <h2 className="headings">Community Tips</h2>
@@ -77,7 +79,7 @@ const Home = () => {
           </div>
         )}
       </div>
-      .{/* Upcoming Events */}
+      {/* Upcoming Events */}
       <div className="rounded-xl">
         <div className="mb-5 text-center">
           <h2 className="headings">Upcoming Events</h2>
@@ -95,6 +97,49 @@ const Home = () => {
             ))}
           </div>
         )}
+      </div>
+      {/* Why go green */}
+      <div>
+        <div className="mb-5 text-center">
+          <h2 className="headings">Why Go Green?</h2>
+          <p className="text-secondary mt-2">
+            Small actions create big changes when we work together
+          </p>
+        </div>
+        <div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center space-y-3">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                <BiLeaf className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="font-semibold text-lg">Protect Our Planet</h3>
+              <p className="text-secondary">
+                Reduce your carbon footprint and preserve natural resources for
+                future generations
+              </p>
+            </div>
+            <div className="text-center space-y-3">
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto">
+                <FaUserSecret className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="font-semibold text-lg">Build Community</h3>
+              <p className="text-secondary">
+                Connect with like-minded individuals and inspire others through
+                your actions
+              </p>
+            </div>
+            <div className="text-center space-y-3">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                <BiCheckCircle className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="font-semibold text-lg">Track Progress</h3>
+              <p className="text-secondary">
+                Measure your impact with real data and celebrate your
+                environmental wins
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
