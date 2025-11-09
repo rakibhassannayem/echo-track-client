@@ -18,7 +18,7 @@ const Register = () => {
           </p>
         </div>
 
-        <label className="label font-medium">Name</label>
+        <label className="label font-medium text-sm">Name</label>
         <input
           type="text"
           name="name"
@@ -26,7 +26,7 @@ const Register = () => {
           placeholder="Enter your name"
         />
 
-        <label className="label font-medium">Email</label>
+        <label className="label font-medium text-sm">Email</label>
         <input
           type="email"
           name="email"
@@ -34,7 +34,7 @@ const Register = () => {
           placeholder="Enter your email"
         />
 
-        <label className="label font-medium">Photo URL</label>
+        <label className="label font-medium text-sm">Photo URL</label>
         <input
           type="text"
           name="photo"
@@ -42,7 +42,7 @@ const Register = () => {
           placeholder="Enter the photo url"
         />
 
-        <label className="label font-medium">Password</label>
+        <label className="label font-medium text-sm">Password</label>
         <input
           type="password"
           name="password"
@@ -50,7 +50,7 @@ const Register = () => {
           placeholder="Enter your password"
         />
 
-        <button className="btn btn-primary mt-4">Login</button>
+        <button className="btn btn-primary mt-4">Register</button>
 
         <div className="divider divider-success text-secondary text-sm">
           OR CONTINUE WITH

@@ -12,7 +12,7 @@ const Stats = () => {
 
       <div className="flex justify-between gap-5 p-5">
         <div className="bg-white flex items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
-          <img className="w-20" src="/logo.png" alt="" />
+          <img className="w-20 mr-2" src="/logo.png" alt="" />
           <div>
             <p className="text-3xl font-bold">850</p>
             <p className="text-secondary">Active Members</p>
@@ -20,7 +20,7 @@ const Stats = () => {
         </div>
 
         <div className="bg-white flex items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
-          <img className="w-20" src="/logo.png" alt="" />
+          <img className="w-20 mr-2" src="/logo.png" alt="" />
           <div>
             <p className="text-3xl font-bold">850</p>
             <p className="text-secondary">Active Members</p>
@@ -28,7 +28,7 @@ const Stats = () => {
         </div>
 
         <div className="bg-white flex items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
-          <img className="w-20" src="/logo.png" alt="" />
+          <img className="w-20 mr-2" src="/logo.png" alt="" />
           <div>
             <p className="text-3xl font-bold">850</p>
             <p className="text-secondary">Active Members</p>

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router";
 
 const Login = () => {
@@ -19,7 +18,7 @@ const Login = () => {
           </p>
         </div>
 
-        <label className="label font-medium">Email</label>
+        <label className="label font-medium text-sm">Email</label>
         <input
           type="email"
           name="email"
@@ -27,7 +26,10 @@ const Login = () => {
           placeholder="Enter your email"
         />
 
-        <label className="label font-medium">Password</label>
+        <label className="label font-medium text-sm flex justify-between">
+          <p>Password</p>
+          <Link to={'/forgot-password'} className="text-primary">Forgot Password?</Link>
+        </label>
         <input
           type="password"
           name="password"

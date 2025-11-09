@@ -1,24 +1,30 @@
-const ChallengeCard = () => {
+import { MdOutlineCalendarToday, MdOutlinePeopleAlt } from "react-icons/md";
+
+const ChallengeCard = ({ challenge }) => {
+  const { title, imageUrl, category, description, duration, participants } =
+    challenge;
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 shadow-sm cursor-pointer hover:scale-105 transition">
       <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
-        />
+        <img className="w-full h-52" src={imageUrl} alt="Shoes" />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">
-          Card Title
-          <div className="badge badge-secondary">NEW</div>
+      <div className="card-body py-2 px-3">
+        <h2 className="card-title text-primary justify-between">
+          {title}
+          <div className="bg-emerald-50 text-secondary rounded-full px-3 py-1 text-sm">{category}</div>
         </h2>
-        <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
-        </p>
-        <div className="card-actions justify-end">
-          <div className="badge badge-outline">Fashion</div>
-          <div className="badge badge-outline">Products</div>
+
+        <p className="text-secondary">{description}</p>
+
+        <div className="card-actions justify-between text-secondary">
+          <div className="flex items-center gap-1">
+            <MdOutlineCalendarToday />
+            {duration} days
+          </div>
+          <div className="flex items-center gap-1">
+            <MdOutlinePeopleAlt />
+            {participants} joined
+          </div>
         </div>
       </div>
     </div>
