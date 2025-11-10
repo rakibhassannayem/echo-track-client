@@ -9,6 +9,7 @@ import ChallengeDetails from "../pages/ChallengeDetails/ChallengeDetails";
 import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoutes from "./PrivateRoutes";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
+import AddChallenge from "../pages/AddChallenge/AddChallenge";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
         element: <Challenges />,
         loader: () => fetch("http://localhost:3000/challenges"),
         hydrateFallbackElement: <LoadingSpinner />,
+      },
+      {
+        path: "/add-challenge",
+        element: <AddChallenge />,
       },
       {
         path: "/challenge-details/:id",

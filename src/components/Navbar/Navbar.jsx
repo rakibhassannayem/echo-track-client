@@ -16,6 +16,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/challenges"}>Challenges</NavLink>
       </li>
+      <li>
+        <NavLink to={"/add-challenge"}>Add Challenge</NavLink>
+      </li>
 
       {user && (
         <>
