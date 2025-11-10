@@ -5,14 +5,27 @@ import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { login, setUser } = use(AuthContext);
+  const { login, setUser, signinwithGoogle } = use(AuthContext);
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     login(email, password)
+      .then((result) => {
+        toast.success("Login Successfull!");
+        setUser(result.user);
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    signinwithGoogle()
       .then((result) => {
         toast.success("Login Successfull!");
         setUser(result.user);
@@ -77,7 +90,10 @@ const Login = () => {
         </div>
 
         {/* Google */}
-        <button className="btn bg-white text-black border-[#e5e5e5]">
+        <button
+          onClick={handleGoogleLogin}
+          className="btn bg-white text-black border-[#e5e5e5]"
+        >
           <svg
             aria-label="Google logo"
             width="16"

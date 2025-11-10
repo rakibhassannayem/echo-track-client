@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const { createUser, setUser } = use(AuthContext);
+  const { createUser, signinwithGoogle, setUser } = use(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
@@ -31,6 +31,18 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         toast.success("Registration Successfull!");
+        setUser(result.user);
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
+
+  const handleGoogleRegister = () => {
+    signinwithGoogle()
+      .then((result) => {
+        toast.success("Login Successfull!");
         setUser(result.user);
         navigate("/");
       })
@@ -119,7 +131,10 @@ const Register = () => {
         </div>
 
         {/* Google */}
-        <button className="btn bg-white text-black border-[#e5e5e5]">
+        <button
+          onClick={handleGoogleRegister}
+          className="btn bg-white text-black border-[#e5e5e5]"
+        >
           <svg
             aria-label="Google logo"
             width="16"
