@@ -8,11 +8,23 @@ const Login = () => {
   const { login, signinwithGoogle } = use(AuthContext);
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
+
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, and one special character."
+      );
+      return;
+    }
+
     login(email, password)
       .then(() => {
         toast.success("Login Successfull!");
@@ -79,6 +91,14 @@ const Login = () => {
               )}
             </div>
           </div>
+
+          {error && (
+            <p className="text-red-500 font-medium">
+              Password must be at least 6 characters long and include at least
+              one uppercase letter, one lowercase letter, and one special
+              character.
+            </p>
+          )}
 
           <button className="btn btn-primary mt-4 w-full">Login</button>
         </form>
