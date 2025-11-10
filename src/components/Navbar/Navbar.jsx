@@ -5,10 +5,11 @@ import { FaUser } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const { user } = use(AuthContext);
+  const { user, setUser, logOut } = use(AuthContext);
   const links = (
     <>
       <li>
@@ -27,6 +28,17 @@ const Navbar = () => {
       )}
     </>
   );
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        toast.success("logged out");
+        setUser(null);
+      })
+      .catch((error) => {
+        toast.error(error.code);
+      });
+  };
 
   useEffect(() => {
     const html = document.querySelector("html");
@@ -136,10 +148,7 @@ const Navbar = () => {
                 </li>
 
                 <li>
-                  <button
-                    // onClick={signOutUser}
-                    className="btn btn-primary"
-                  >
+                  <button onClick={handleLogout} className="btn btn-primary">
                     <IoLogOut /> Logout
                   </button>
                 </li>

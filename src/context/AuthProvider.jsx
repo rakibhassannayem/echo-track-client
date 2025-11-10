@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     createUser,
+    logOut,
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;
