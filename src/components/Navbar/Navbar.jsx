@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { FaUser } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -42,21 +43,7 @@ const Navbar = () => {
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
+              <GiHamburgerMenu size={24} />
             </div>
             <ul
               tabIndex="-1"
@@ -65,7 +52,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to={"/"} className="btn btn-ghost text-xl font-bold">
+          <Link to={"/"} className="btn btn-ghost text-xl font-bold p-0">
             <img className="w-12" src="/logo.png" alt="" />
             EcoTrack
           </Link>
@@ -122,7 +109,7 @@ const Navbar = () => {
                     referrerPolicy="no-referrer"
                     src={
                       user.photoURL ||
-                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                      "https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-green-icon.png"
                     }
                   />
                 </div>

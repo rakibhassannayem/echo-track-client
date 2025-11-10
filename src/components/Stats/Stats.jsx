@@ -1,4 +1,5 @@
 import { BiLeaf } from "react-icons/bi";
+import { FaTasks } from "react-icons/fa";
 import { GoPeople } from "react-icons/go";
 
 const Stats = ({ activeCount }) => {
@@ -12,16 +13,21 @@ const Stats = ({ activeCount }) => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-between gap-5 p-5">
-        <div className="bg-white flex items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
-          <img className="w-20 mr-2" src="/logo.png" alt="" />
+        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
+          <div className="bg-primary/10 rounded-full p-3">
+            <FaTasks color="green" size={29} />
+          </div>
+
           <div>
             <p className="text-3xl font-bold">{activeCount}</p>
             <p className="text-secondary">Active challenges</p>
           </div>
         </div>
 
-        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
-          <BiLeaf size={50} color="green" />
+        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
+          <div className="bg-primary/10 rounded-full p-3">
+            <BiLeaf color="green" size={32} />
+          </div>
           <div>
             <p className="text-3xl font-bold">2,450 kg</p>
             <p className="text-secondary">CO₂ Saved</p>
@@ -29,7 +35,9 @@ const Stats = ({ activeCount }) => {
         </div>
 
         <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
-          <GoPeople size={54} color="green" />
+          <div className="bg-primary/10 rounded-full p-3">
+            <GoPeople color="green" size={32} />
+          </div>
           <div>
             <p className="text-3xl font-bold">850</p>
             <p className="text-secondary">Active Members</p>
