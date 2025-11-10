@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
+import { FaUser } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
+import { IoLogOut } from "react-icons/io5";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const { user } = use(AuthContext);
   const links = (
     <>
       <li>
@@ -11,22 +16,14 @@ const Navbar = () => {
       <li>
         <NavLink to={"/challenges"}>Challenges</NavLink>
       </li>
-      <li>
-        <NavLink to={"/my-activities"}>My Activites</NavLink>
-      </li>
-      {/* {user && (
+
+      {user && (
         <>
           <li>
-            <NavLink to={"/myProducts"}>My Products</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/myBids"}>My Bids</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/createProduct"}>Create Product</NavLink>
+            <NavLink to={"/my-activities"}>My Activites</NavLink>
           </li>
         </>
-      )} */}
+      )}
     </>
   );
 
@@ -112,12 +109,65 @@ const Navbar = () => {
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </label>
-          <Link to={"/login"} className="btn btn-primary">
-            Login
-          </Link>
-          <Link to={"/register"} className="btn btn-primay">
-            Register
-          </Link>
+
+          {user ? (
+            <div className="dropdown dropdown-end z-50">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-9 border-2 border-gray-300 rounded-full">
+                  <img
+                    referrerPolicy="no-referrer"
+                    src={
+                      user.photoURL ||
+                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    }
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex="-1"
+                className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+              >
+                <div className=" pb-3 border-b border-b-gray-200">
+                  <li className="text-sm font-bold">{user.displayName}</li>
+                  <li className="text-xs">{user.email}</li>
+                </div>
+                <li className="mt-3">
+                  <Link to={"/profile"}>
+                    <FaUser /> Profile
+                  </Link>
+                </li>
+
+                <li className="mb-3">
+                  <a>
+                    {" "}
+                    <FaGear /> Settings
+                  </a>
+                </li>
+
+                <li>
+                  <button
+                    // onClick={signOutUser}
+                    className="btn btn-primary"
+                  >
+                    <IoLogOut /> Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <Link to={"/login"} className="btn btn-primary">
+                Login
+              </Link>
+              <Link to={"/register"} className="btn btn-primay">
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
