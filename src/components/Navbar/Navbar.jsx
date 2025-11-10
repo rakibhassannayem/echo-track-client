@@ -1,9 +1,6 @@
 import { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-import { FaUser } from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
-import { IoLogOut } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { toast } from "react-toastify";
 

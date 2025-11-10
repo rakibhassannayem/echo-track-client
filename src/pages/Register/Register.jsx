@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const { createUser, signinwithGoogle, setUser } = use(AuthContext);
+  const { createUser, signinwithGoogle } = use(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
@@ -29,9 +29,8 @@ const Register = () => {
     }
 
     createUser(email, password)
-      .then((result) => {
+      .then(() => {
         toast.success("Registration Successfull!");
-        setUser(result.user);
         navigate("/");
       })
       .catch((err) => {
@@ -41,9 +40,8 @@ const Register = () => {
 
   const handleGoogleRegister = () => {
     signinwithGoogle()
-      .then((result) => {
+      .then(() => {
         toast.success("Login Successfull!");
-        setUser(result.user);
         navigate("/");
       })
       .catch((err) => {
