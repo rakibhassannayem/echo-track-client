@@ -3,10 +3,11 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const { user, setUser, logOut } = use(AuthContext);
+  const { user, setUser, logOut, loading } = use(AuthContext);
   const links = (
     <>
       <li>
@@ -99,7 +100,9 @@ const Navbar = () => {
             </svg>
           </label>
 
-          {user ? (
+          {loading ? (
+            <LoadingSpinner />
+          ) : user ? (
             <div className="dropdown dropdown-end z-50">
               <div tabIndex={0} role="button" className="btn btn-ghost avatar">
                 <div className="w-9 border-2 border-gray-300 rounded-full">

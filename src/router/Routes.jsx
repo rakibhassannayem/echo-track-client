@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import ChallengeDetails from "../pages/ChallengeDetails/ChallengeDetails";
 import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoutes from "./PrivateRoutes";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 
 export const router = createBrowserRouter([
   {
@@ -21,22 +22,24 @@ export const router = createBrowserRouter([
       },
       {
         path: "/challenges",
-        element: (
-          <PrivateRoutes>
-            <Challenges />
-          </PrivateRoutes>
-        ),
+        element: <Challenges />,
         loader: () => fetch("http://localhost:3000/challenges"),
+        hydrateFallbackElement: <LoadingSpinner />,
       },
       {
         path: "/challenge-details/:id",
         element: <ChallengeDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/challenge/${params.id}`),
+        hydrateFallbackElement: <LoadingSpinner />,
       },
       {
         path: "/my-activities",
-        element: <MyActivities />,
+        element: (
+          <PrivateRoutes>
+            <MyActivities />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",
@@ -45,6 +48,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/loading",
+        element: <LoadingSpinner />,
       },
     ],
   },
