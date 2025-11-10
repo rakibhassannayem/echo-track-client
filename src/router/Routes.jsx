@@ -6,6 +6,7 @@ import Challenges from "../pages/Challenges/Challenges";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ChallengeDetails from "../pages/ChallengeDetails/ChallengeDetails";
+import NotFound from "../pages/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -41,5 +42,9 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <NotFound />,
   },
 ]);
