@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ChallengeDetails from "../pages/ChallengeDetails/ChallengeDetails";
 import NotFound from "../pages/NotFound/NotFound";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/challenges",
-        element: <Challenges />,
+        element: (
+          <PrivateRoutes>
+            <Challenges />
+          </PrivateRoutes>
+        ),
         loader: () => fetch("http://localhost:3000/challenges"),
       },
       {
