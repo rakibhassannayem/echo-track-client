@@ -62,6 +62,7 @@ const Register = () => {
             name="name"
             className="input w-full"
             placeholder="Enter your name"
+            required
           />
 
           <label className="label font-medium text-sm">Email</label>
@@ -70,6 +71,7 @@ const Register = () => {
             name="email"
             className="input w-full"
             placeholder="Enter your email"
+            required
           />
 
           <label className="label font-medium text-sm">Photo URL</label>

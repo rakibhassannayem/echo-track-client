@@ -1,6 +1,27 @@
-import { Link } from "react-router";
+import { use, useState } from "react";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { login, setUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const [showPass, setShowPass] = useState(false);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    login(email, password)
+      .then((result) => {
+        toast.success("Login Successfull!");
+        setUser(result.user);
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
   return (
     <div className="flex flex-col items-center mb-10">
       <div className="flex flex-col items-center">
@@ -12,32 +33,44 @@ const Login = () => {
       </div>
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-lg mt-5 border p-4 pt-2">
         <div className="mb-2">
-          <h3 className="headings text-xl!">Sign in</h3>
+          <h3 className="headings text-xl!">Create Account</h3>
           <p className="text-secondary text-sm">
-            Enter your credentials to access your account
+            Sign up to join our eco-conscious community
           </p>
         </div>
+        <form onSubmit={handleLogin}>
+          <label className="label font-medium text-sm">Email</label>
+          <input
+            type="email"
+            name="email"
+            className="input w-full"
+            placeholder="Enter your email"
+            required
+          />
 
-        <label className="label font-medium text-sm">Email</label>
-        <input
-          type="email"
-          name="email"
-          className="input w-full"
-          placeholder="Enter your email"
-        />
+          <div className="relative">
+            <label className="label font-medium text-sm">Password</label>
+            <input
+              type={showPass ? "text" : "password"}
+              name="password"
+              className="input w-full"
+              placeholder="Enter your password"
+              required
+            />
+            <div
+              onClick={() => setShowPass(!showPass)}
+              className="absolute right-3 bottom-3 cursor-pointer hover:scale-110 transition"
+            >
+              {showPass ? (
+                <FaRegEye size={14} color="green" />
+              ) : (
+                <FaRegEyeSlash size={14} color="green" />
+              )}
+            </div>
+          </div>
 
-        <label className="label font-medium text-sm flex justify-between">
-          <p>Password</p>
-          <Link to={'/forgot-password'} className="text-primary">Forgot Password?</Link>
-        </label>
-        <input
-          type="password"
-          name="password"
-          className="input w-full"
-          placeholder="Enter your password"
-        />
-
-        <button className="btn btn-primary mt-4">Login</button>
+          <button className="btn btn-primary mt-4 w-full">Login</button>
+        </form>
 
         <div className="divider divider-success text-secondary text-sm">
           OR CONTINUE WITH
@@ -72,10 +105,11 @@ const Login = () => {
               ></path>
             </g>
           </svg>
-          Login with Google
+          Google Login
         </button>
+
         <p className="text-center text-secondary text-sm font-medium">
-          Don't have an account?
+          Don't have account?
           <Link to={"/register"} className="text-primary">
             {" "}
             Register here
