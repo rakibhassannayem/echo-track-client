@@ -1,12 +1,130 @@
+import { BsArrowLeft } from "react-icons/bs";
+import { CiCalendar } from "react-icons/ci";
+import { GoGoal } from "react-icons/go";
+import { IoIosPeople } from "react-icons/io";
 import { useLoaderData } from "react-router";
 
 const ChallengeDetails = () => {
   const challenge = useLoaderData();
-  const { title, imageUrl } = challenge;
+  const {
+    title,
+    imageUrl,
+    category,
+    description,
+    duration,
+    participants,
+    target,
+    startDate,
+    endDate,
+    impactMetric,
+  } = challenge;
+  const handleJoinChallenge = () => {};
   return (
     <div>
-      <p className="text-2xl font-bold">{title}</p>
-      <img src={imageUrl} alt="" />
+      {/* hero img */}
+      <div className="relative h-screen overflow-hidden">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-full object-cover rounded-2xl"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
+      </div>
+
+      <div className="container mx-auto px-4 -mt-90 relative z-10">
+        <div className="max-w-4xl  mx-auto rounded-xl">
+          <button className="btn bg-transparent border-0 text-lg font-bold mb-4 flex items-center">
+            <BsArrowLeft size={18} />
+            Back to Challenges
+          </button>
+          <div className="rounded-xl shadow-lg p-8 mb-8 bg-white">
+            <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+              <div>
+                <div className="badge font-medium bg-primary  text-white mb-3">
+                  {category}
+                </div>
+
+                <h1 className="text-4xl font-bold mb-4">{challenge.title}</h1>
+
+                <p className="text-lg text-secondary">{description}</p>
+              </div>
+              <button className="btn btn-primary" onClick={handleJoinChallenge}>
+                Join Challenge
+              </button>
+            </div>
+
+            <div className="divider"></div>
+            {/* stat */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-between px-2">
+              <div className="flex gap-2 items-center">
+                <div className="bg-primary/10 rounded-full p-3">
+                  <CiCalendar color="green" size={32} />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-bold text-xl">{duration}</span>
+                  <span className="text-secondary">Days</span>
+                </div>
+              </div>
+
+              <div className="flex gap-2 items-center">
+                <div className="bg-primary/10 rounded-full p-3">
+                  <IoIosPeople color="green" size={32} />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-bold text-xl">{participants}</span>
+                  <span className="text-secondary">Participants</span>
+                </div>
+              </div>
+
+              <div className="flex gap-2 items-center">
+                <div className="bg-primary/10 rounded-full p-3">
+                  <GoGoal color="green" size={32} />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-medium text-gray-600">{target}</span>
+                  <p className="text-secondary">Goal</p>
+                </div>
+              </div>
+            </div>
+            <div className="divider"></div>
+
+            {/* Challenge Details */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div>
+                <h3 className="font-semibold mb-2">Duration</h3>
+                <p className="text-secondary">{duration} days</p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">Impact Metric</h3>
+                <p className="text-secondary">{impactMetric}</p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">Start Date</h3>
+                <p className="text-secondary">
+                  {new Date(startDate).toLocaleDateString()}
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">End Date</h3>
+                <p className="text-secondary">
+                  {new Date(endDate).toLocaleDateString()}
+                </p>
+              </div>
+            </div>
+
+            {/* join */}
+            <div className="mt-8 p-6 bg-primary/10 rounded-lg text-center">
+              <h3 className="font-semibold text-lg mb-2">
+                Ready to make an impact?
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                {participants} others have joined in this challenge
+              </p>
+              <button className="btn btn-primary" onClick={handleJoinChallenge}>Join Challenge Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
