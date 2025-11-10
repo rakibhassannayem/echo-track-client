@@ -1,6 +1,43 @@
-import { Link } from "react-router";
+import { use, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
+  const { createUser, setUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [showPass, setShowPass] = useState(false);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const photoURL = e.target.photo.value;
+    const password = e.target.password.value;
+    console.log(name, email, photoURL, password);
+
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
+
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, and one special character."
+      );
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        toast.success("Registration Successfull!");
+        setUser(result.user);
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
   return (
     <div className="flex flex-col items-center mb-10">
       <div className="flex flex-col items-center">
@@ -10,6 +47,7 @@ const Register = () => {
           Start your sustainability journey today
         </p>
       </div>
+
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-lg mt-5 border p-4 pt-2">
         <div className="mb-2">
           <h3 className="headings text-xl!">Create Account</h3>
@@ -17,40 +55,62 @@ const Register = () => {
             Sign up to join our eco-conscious community
           </p>
         </div>
+        <form onSubmit={handleRegister}>
+          <label className="label font-medium text-sm">Name</label>
+          <input
+            type="text"
+            name="name"
+            className="input w-full"
+            placeholder="Enter your name"
+          />
 
-        <label className="label font-medium text-sm">Name</label>
-        <input
-          type="text"
-          name="name"
-          className="input w-full"
-          placeholder="Enter your name"
-        />
+          <label className="label font-medium text-sm">Email</label>
+          <input
+            type="email"
+            name="email"
+            className="input w-full"
+            placeholder="Enter your email"
+          />
 
-        <label className="label font-medium text-sm">Email</label>
-        <input
-          type="email"
-          name="email"
-          className="input w-full"
-          placeholder="Enter your email"
-        />
+          <label className="label font-medium text-sm">Photo URL</label>
+          <input
+            type="text"
+            name="photo"
+            className="input w-full"
+            placeholder="Enter the photo url"
+          />
 
-        <label className="label font-medium text-sm">Photo URL</label>
-        <input
-          type="text"
-          name="photo"
-          className="input w-full"
-          placeholder="Enter the photo url"
-        />
+          <div className="relative">
+            <label className="label font-medium text-sm">Password</label>
+            <input
+              type={showPass ? "text" : "password"}
+              name="password"
+              className="input w-full"
+              placeholder="Enter your password"
+              required
+            />
+            <div
+              onClick={() => setShowPass(!showPass)}
+              className="absolute right-3 bottom-3 cursor-pointer hover:scale-110 transition"
+            >
+              {showPass ? (
+                <FaRegEye size={14} color="green" />
+              ) : (
+                <FaRegEyeSlash size={14} color="green" />
+              )}
+            </div>
+          </div>
 
-        <label className="label font-medium text-sm">Password</label>
-        <input
-          type="password"
-          name="password"
-          className="input w-full"
-          placeholder="Enter your password"
-        />
+          {error && (
+            <p className="text-red-500 font-medium">
+              Password must be at least 6 characters long and include at least
+              one uppercase letter, one lowercase letter, and one special
+              character.
+            </p>
+          )}
 
-        <button className="btn btn-primary mt-4">Register</button>
+          <button className="btn btn-primary mt-4 w-full">Register</button>
+        </form>
 
         <div className="divider divider-success text-secondary text-sm">
           OR CONTINUE WITH
