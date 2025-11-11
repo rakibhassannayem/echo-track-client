@@ -29,7 +29,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-challenge",
-        element: <AddChallenge />,
+        element: (
+          <PrivateRoutes>
+            <AddChallenge />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/challenge-details/:id",

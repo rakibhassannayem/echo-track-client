@@ -2,6 +2,7 @@ import { use } from "react";
 import { BiPlus } from "react-icons/bi";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const AddChallenge = () => {
   const navigate = useNavigate();
@@ -9,24 +10,18 @@ const AddChallenge = () => {
 
   const handleCreateChallange = (e) => {
     e.preventDefault();
-    const startDate = new Date(e.target.startDate.value);
-    const endDate = new Date(e.target.endDate.value);
-    const duration = Math.max(
-      0,
-      Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24))
-    );
 
     const formData = {
       title: e.target.title.value,
       category: e.target.category.value,
       description: e.target.description.value,
-      duration,
+      duration: 0,
       target: e.target.target.value,
       participants: 0,
       impactMetric: e.target.impactMetric.value,
       createdBy: user.email,
-      startDate,
-      endDate,
+      startDate: e.target.startDate.value,
+      endDate: e.target.endDate.value,
       imageUrl: e.target.imageUrl.value,
     };
 
@@ -38,11 +33,12 @@ const AddChallenge = () => {
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        toast.success("challenge added successfully!");
+        // navigate('/challenges')
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        toast.error("Failed to add the challenge!");
       });
   };
 

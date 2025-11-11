@@ -1,12 +1,17 @@
+import { use } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { CiCalendar } from "react-icons/ci";
 import { GoGoal } from "react-icons/go";
 import { IoIosPeople } from "react-icons/io";
 import { useLoaderData } from "react-router";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
 
 const ChallengeDetails = () => {
   const challenge = useLoaderData();
+  const { user } = use(AuthContext);
   const {
+    _id,
     title,
     imageUrl,
     category,
@@ -18,7 +23,33 @@ const ChallengeDetails = () => {
     endDate,
     impactMetric,
   } = challenge;
-  const handleJoinChallenge = () => {};
+  const handleJoinChallenge = (e) => {
+    e.preventDefault();
+
+    const userChallengeInfo = {
+      userEmail: user.email,
+      challengeId: _id,
+      status: "Ongoing",
+      progress: 0,
+      joinDate: new Date().toISOString(),
+    };
+
+    fetch("http://localhost:3000/userChallenges", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userChallengeInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Joined Successfully!");
+        console.log(data);
+      })
+      .catch(() => {
+        toast.error("joining failed!");
+      });
+  };
   return (
     <div>
       {/* hero img */}
@@ -33,7 +64,7 @@ const ChallengeDetails = () => {
 
       <div className="container mx-auto px-4 -mt-90 relative z-10">
         <div className="max-w-4xl  mx-auto rounded-xl">
-          <button className="btn bg-transparent border-0 text-lg font-bold mb-4 flex items-center">
+          <button className="btn bg-primary/20 border-0 text-lg font-bold mb-4 flex items-center">
             <BsArrowLeft size={18} />
             Back to Challenges
           </button>
@@ -120,7 +151,9 @@ const ChallengeDetails = () => {
               <p className="text-muted-foreground mb-4">
                 {participants} others have joined in this challenge
               </p>
-              <button className="btn btn-primary" onClick={handleJoinChallenge}>Join Challenge Now</button>
+              <button className="btn btn-primary" onClick={handleJoinChallenge}>
+                Join Challenge Now
+              </button>
             </div>
           </div>
         </div>

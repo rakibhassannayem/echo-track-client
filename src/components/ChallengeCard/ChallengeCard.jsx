@@ -14,15 +14,15 @@ const ChallengeCard = ({ challenge }) => {
   return (
     <Link
       to={`/challenge-details/${_id}`}
-      className="card bg-base-100 shadow-sm cursor-pointer hover:scale-105 transition"
+      className="group card bg-base-100 shadow-sm cursor-pointer hover:shadow-2xl"
     >
       <figure>
-        <img className="w-full h-52" src={imageUrl} alt="Shoes" />
+        <img className="w-full h-52 object-cover hover:scale-110 transition" src={imageUrl} alt="Shoes" />
       </figure>
       <div className="card-body py-2 px-3">
-        <h2 className="card-title text-primary justify-between">
+        <h2 className="card-title text-primary justify-between group-hover:text-green-500">
           {title}
-          <div className="bg-emerald-50 text-secondary rounded-full px-3 py-1 text-sm">
+          <div className="bg-green-50 text-secondary rounded-full px-3 py-1 text-sm">
             {category}
           </div>
         </h2>
