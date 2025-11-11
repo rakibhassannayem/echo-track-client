@@ -51,7 +51,7 @@ const Register = () => {
   return (
     <div className="flex flex-col items-center mb-10">
       <div className="flex flex-col items-center">
-        <img className="w-25" src="/logo.png" alt="" />
+        <img className="w-20" src="/logo.png" alt="" />
         <h2 className="headings">Join EcoTrack</h2>
         <p className="text-secondary mt-2">
           Start your sustainability journey today
@@ -66,25 +66,25 @@ const Register = () => {
           </p>
         </div>
         <form onSubmit={handleRegister}>
-          <label className="label font-medium text-sm">Name</label>
+          <label className="label font-medium text-sm mb-1">Name</label>
           <input
             type="text"
             name="name"
-            className="input w-full"
+            className="input w-full mb-1"
             placeholder="Enter your name"
             required
           />
 
-          <label className="label font-medium text-sm">Email</label>
+          <label className="label font-medium text-sm mb-1">Email</label>
           <input
             type="email"
             name="email"
-            className="input w-full"
+            className="input w-full mb-1"
             placeholder="Enter your email"
             required
           />
 
-          <label className="label font-medium text-sm">Photo URL</label>
+          <label className="label font-medium text-sm mb-1">Photo URL</label>
           <input
             type="text"
             name="photo"
@@ -93,11 +93,11 @@ const Register = () => {
           />
 
           <div className="relative">
-            <label className="label font-medium text-sm">Password</label>
+            <label className="label font-medium text-sm mb-1">Password</label>
             <input
               type={showPass ? "text" : "password"}
               name="password"
-              className="input w-full"
+              className="input w-full mb-1"
               placeholder="Enter your password"
               required
             />

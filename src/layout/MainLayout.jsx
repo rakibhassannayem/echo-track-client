@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="bg-linear-to-t from-primary/50 to-transparent">
       <Navbar />
       <div className="container mx-auto my-4 px-3">
         <Outlet />

@@ -6,12 +6,12 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #008236;
+  --color-primary: #43A047;
   --color-secondary: #6a7282;
 }
 
 .btn-primary {
-  @apply bg-green-700 border-none text-white;
+  @apply bg-green-600 border-none text-white;
 }
 .btn-primary:hover {
   @apply opacity-90;

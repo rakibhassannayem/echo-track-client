@@ -35,7 +35,6 @@ const AddChallenge = () => {
       .then((res) => res.json())
       .then(() => {
         toast.success("challenge added successfully!");
-        // navigate('/challenges')
       })
       .catch(() => {
         toast.error("Failed to add the challenge!");
@@ -43,7 +42,7 @@ const AddChallenge = () => {
   };
 
   return (
-    <div className="bg-linear-to-t from-primary/20 to-transparent py-3 rounded-lg">
+    <div className="py-3 rounded-lg">
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-5">
         {/* Header */}
         <div className="mb-4">

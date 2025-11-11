@@ -10,6 +10,7 @@ import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoutes from "./PrivateRoutes";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 import AddChallenge from "../pages/AddChallenge/AddChallenge";
+import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 
 export const router = createBrowserRouter([
   {
@@ -59,8 +60,8 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/loading",
-        element: <LoadingSpinner />,
+        path: "/forgot-password",
+        element: <ForgotPassword />,
       },
     ],
   },

@@ -48,7 +48,7 @@ const Login = () => {
   return (
     <div className="flex flex-col items-center mb-10">
       <div className="flex flex-col items-center">
-        <img className="w-25" src="/logo.png" alt="" />
+        <img className="w-20" src="/logo.png" alt="" />
         <h2 className="headings">Login to EcoTrack</h2>
         <p className="text-secondary mt-2">
           Welcome back! Continue your sustainability journey
@@ -62,17 +62,20 @@ const Login = () => {
           </p>
         </div>
         <form onSubmit={handleLogin}>
-          <label className="label font-medium text-sm">Email</label>
+          <label className="label font-medium text-sm mb-1">Email</label>
           <input
             type="email"
             name="email"
-            className="input w-full"
+            className="input w-full mb-2"
             placeholder="Enter your email"
             required
           />
 
-          <div className="relative">
-            <label className="label font-medium text-sm">Password</label>
+          <div className="relative w-full">
+            <div className="flex justify-between mb-1">
+              <label className="label font-medium text-sm">Password</label>
+              <Link to={"/forgot-password"} className="text-primary text-sm font-medium">Forgot Password?</Link>
+            </div>
             <input
               type={showPass ? "text" : "password"}
               name="password"

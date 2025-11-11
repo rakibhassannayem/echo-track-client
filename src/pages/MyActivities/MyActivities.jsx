@@ -1,10 +1,37 @@
+import { use, useEffect, useState } from "react";
 import { BiLeaf } from "react-icons/bi";
-import { GoPeople } from "react-icons/go";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { LuBadgeCheck } from "react-icons/lu";
 import { SlGraph } from "react-icons/sl";
+import { AuthContext } from "../../context/AuthContext";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import MyActivitiesCard from "../../components/MyActivitiesCard/MyActivitiesCard";
 
 const MyActivities = () => {
+  const { user } = use(AuthContext);
+  const [challenges, setChallenges] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/my-activities?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const mergedData = data.map((item) => ({
+          ...item.challenge,
+          status: item.status,
+          progress: item.progress,
+          joinDate: item.joinDate,
+        }));
+
+        setChallenges(mergedData);
+        setLoading(false);
+      });
+  }, [user]);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div>
       <div>
@@ -60,23 +87,10 @@ const MyActivities = () => {
       {/* my challanges */}
 
       <h1 className="headings mb-3">My Challenges</h1>
-
-      <div className="bg-white py-5 px-3 w-full rounded-xl border border-gray-200 ">
-        <h3 className="text-xl font-semibold">Plastic-Free July</h3>
-        <p className="text-secondary mb-2">Waste Reduction</p>
-        <progress
-          className="progress progress-success text-primary/80"
-          value="40"
-          max="100"
-        ></progress>
-        <div className="flex justify-between my-1">
-          <p className="text-secondary">Joined: 7/1/2024</p>
-          <p className="text-secondary">10 days remaining</p>
-        </div>
-        <div className="space-x-3 my-3">
-          <button className="btn">Update</button>
-          <button className="btn btn-ghost">View Details</button>
-        </div>
+      <div className="space-y-3">
+        {challenges.map((challenge, i) => (
+          <MyActivitiesCard key={i} challenge={challenge} />
+        ))}
       </div>
     </div>
   );
