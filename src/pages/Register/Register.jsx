@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const { createUser, signinwithGoogle } = use(AuthContext);
+  const { createUser, updateUser, setUser, signinwithGoogle } =
+    use(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
@@ -14,9 +15,8 @@ const Register = () => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
-    const photoURL = e.target.photo.value;
+    const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log(name, email, photoURL, password);
 
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
@@ -27,11 +27,19 @@ const Register = () => {
       );
       return;
     }
-
     createUser(email, password)
-      .then(() => {
-        toast.success("Registration Successfull!");
-        navigate("/");
+      .then((res) => {
+        const user = res.user;
+        updateUser({ displayName: name, photoUrl: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            toast.success("Registration Successfull!");
+            navigate("/");
+          })
+          .catch((err) => {
+            setUser(user);
+            toast.error(err.code);
+          });
       })
       .catch((err) => {
         toast.error(err.code);
@@ -84,7 +92,9 @@ const Register = () => {
             required
           />
 
-          <label className="label font-medium text-sm mb-1">Photo URL</label>
+          <label className="label font-medium text-sm mb-1">
+            Photo URL (Optional)
+          </label>
           <input
             type="text"
             name="photo"

@@ -45,6 +45,7 @@ const Login = () => {
         toast.error(err.code);
       });
   };
+
   return (
     <div className="flex flex-col items-center mb-10">
       <div className="flex flex-col items-center">
@@ -74,7 +75,12 @@ const Login = () => {
           <div className="relative w-full">
             <div className="flex justify-between mb-1">
               <label className="label font-medium text-sm">Password</label>
-              <Link to={"/forgot-password"} className="text-primary text-sm font-medium">Forgot Password?</Link>
+              <Link
+                to={"/forgot-password"}
+                className="text-primary text-sm font-medium cursor-pointer"
+              >
+                Forgot Password?
+              </Link>
             </div>
             <input
               type={showPass ? "text" : "password"}

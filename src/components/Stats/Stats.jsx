@@ -4,7 +4,7 @@ import { GoPeople } from "react-icons/go";
 
 const Stats = ({ activeCount }) => {
   return (
-    <div className="bg-base-300 py-10 rounded-xl">
+    <div className="py-10 rounded-xl">
       <div className=" text-center">
         <h2 className="headings">Our Community Impact</h2>
         <p className="text-secondary mt-2">

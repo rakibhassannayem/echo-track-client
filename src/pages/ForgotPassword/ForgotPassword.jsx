@@ -1,7 +1,23 @@
+import { use, useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
 
 const ForgotPassword = () => {
+  const { resetPassword } = use(AuthContext);
+  const [error, setError] = useState("");
+  const handleReset = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    resetPassword(email)
+      .then(() => {
+        window.open("https://mail.google.com", "_blank");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        setError(errorCode);
+      });
+  };
   return (
     <div className="flex flex-col items-center mb-10">
       <div className="flex flex-col items-center">
@@ -18,7 +34,7 @@ const ForgotPassword = () => {
             Enter your email address below
           </p>
         </div>
-        <form>
+        <form onSubmit={handleReset}>
           <label className="label font-medium text-sm">Email</label>
           <input
             type="email"
@@ -27,6 +43,13 @@ const ForgotPassword = () => {
             placeholder="Enter your email"
             required
           />
+          {error && (
+            <p className="text-red-500 font-medium">
+              Password must be at least 6 characters long and include at least
+              one uppercase letter, one lowercase letter, and one special
+              character.
+            </p>
+          )}
 
           <button className="btn btn-primary mt-4 w-full">
             Reset Password
@@ -37,7 +60,7 @@ const ForgotPassword = () => {
           to={"/login"}
           className="text-sm flex items-center justify-center mt-5 text-secondary/80 hover:translate-x-1 transition"
         >
-          <IoIosArrowRoundBack size={24}/> Back to login
+          <IoIosArrowRoundBack size={24} /> Back to login
         </Link>
       </fieldset>
     </div>
