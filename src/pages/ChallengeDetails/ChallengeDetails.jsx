@@ -148,7 +148,7 @@ const ChallengeDetails = () => {
               <h3 className="font-semibold text-lg mb-2">
                 Ready to make an impact?
               </h3>
-              <p className="text-muted-foreground mb-4">
+              <p className="text-secondary mb-4">
                 {participants} others have joined in this challenge
               </p>
               <button className="btn btn-primary" onClick={handleJoinChallenge}>

@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/challenge-details/:id",
+        path: "/challenges/join/:id",
         element: <ChallengeDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/challenge/${params.id}`),
