@@ -11,17 +11,25 @@ const MyActivities = () => {
   const { user } = use(AuthContext);
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [challengeCount, setChallengeCount] = useState("");
+  const [completedCount, setCompletedCount] = useState(0);
 
   useEffect(() => {
     fetch(`http://localhost:3000/my-activities?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
+        setChallengeCount(data.length);
         const mergedData = data.map((item) => ({
           ...item.challenge,
           status: item.status,
           progress: item.progress,
           joinDate: item.joinDate,
+          challengeId: item.challengeId,
+          user_id: item._id,
         }));
+
+        const completed = mergedData.filter((ch) => ch.progress >= 10).length;
+        setCompletedCount(completed);
 
         setChallenges(mergedData);
         setLoading(false);
@@ -68,8 +76,8 @@ const MyActivities = () => {
             <SlGraph color="green" size={32} />
           </div>
           <div>
-            <p className="text-3xl font-bold">23</p>
-            <p className="text-secondary">Active Days</p>
+            <p className="text-3xl font-bold">{challengeCount}</p>
+            <p className="text-secondary">Joined Challenges</p>
           </div>
         </div>
 
@@ -78,14 +86,13 @@ const MyActivities = () => {
             <LuBadgeCheck color="green" size={32} />
           </div>
           <div>
-            <p className="text-3xl font-bold">5</p>
-            <p className="text-secondary">Challengeg Complete</p>
+            <p className="text-3xl font-bold">{completedCount}</p>
+            <p className="text-secondary">Completed Challenge</p>
           </div>
         </div>
       </div>
 
       {/* my challanges */}
-
       <h1 className="headings mb-3">My Challenges</h1>
       <div className="space-y-3">
         {challenges.map((challenge, i) => (

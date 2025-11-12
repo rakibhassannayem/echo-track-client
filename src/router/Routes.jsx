@@ -11,6 +11,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 import AddChallenge from "../pages/AddChallenge/AddChallenge";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
+import ActivityDetails from "../pages/ActivityDetails/ActivityDetails";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/challenges/join/:id",
+        path: "/challenges/details/:id",
         element: <ChallengeDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/challenge/${params.id}`),
@@ -51,6 +52,17 @@ export const router = createBrowserRouter([
             <MyActivities />
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/my-activities/:id",
+        element: (
+          <PrivateRoutes>
+            <ActivityDetails />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/userChallenges/${params.id}`),
+        hydrateFallbackElement: <LoadingSpinner />,
       },
       {
         path: "/login",

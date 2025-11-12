@@ -13,7 +13,7 @@ const ChallengeCard = ({ challenge }) => {
   } = challenge;
   return (
     <Link
-      to={`/challenges/join/${_id}`}
+      to={`/challenges/details/${_id}`}
       className="group card bg-base-100 shadow-sm cursor-pointer hover:shadow-2xl"
     >
       <figure>

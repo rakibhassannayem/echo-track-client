@@ -1,15 +1,18 @@
-import { use } from "react";
+import { use, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { CiCalendar } from "react-icons/ci";
 import { GoGoal } from "react-icons/go";
 import { IoIosPeople } from "react-icons/io";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
 
 const ChallengeDetails = () => {
   const challenge = useLoaderData();
   const { user } = use(AuthContext);
+  const [participantsCount, setParticipantsCount] = useState(
+    challenge.participants
+  );
   const {
     _id,
     title,
@@ -17,12 +20,12 @@ const ChallengeDetails = () => {
     category,
     description,
     duration,
-    participants,
     target,
     startDate,
     endDate,
     impactMetric,
   } = challenge;
+
   const handleJoinChallenge = (e) => {
     e.preventDefault();
 
@@ -43,8 +46,22 @@ const ChallengeDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Joined Successfully!");
-        console.log(data);
+        if (data.result.insertedId) {
+          fetch(`http://localhost:3000/challenges/${_id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+          })
+            .then((res) => res.json())
+            .then(() => {
+              setParticipantsCount((prev) => prev + 1);
+              toast.success("Joined Successfully!");
+            })
+            .catch(() => {
+              toast.error("Failed to update participants!");
+            });
+        } else {
+          toast.error("Joining failed!");
+        }
       })
       .catch(() => {
         toast.error("joining failed!");
@@ -64,10 +81,12 @@ const ChallengeDetails = () => {
 
       <div className="container mx-auto px-4 -mt-90 relative z-10">
         <div className="max-w-4xl  mx-auto rounded-xl">
-          <button className="btn bg-primary/20 border-0 text-lg font-bold mb-4 flex items-center">
-            <BsArrowLeft size={18} />
-            Back to Challenges
-          </button>
+          <Link to={'/challenges'}>
+            <button className="btn bg-primary/20 border-0 text-lg font-bold mb-4 flex items-center hover:-translate-x-3 transition">
+              <BsArrowLeft size={18} />
+              Back to Challenges
+            </button>
+          </Link>
           <div className="rounded-xl shadow-lg p-8 mb-8 bg-white">
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
@@ -102,7 +121,7 @@ const ChallengeDetails = () => {
                   <IoIosPeople color="green" size={32} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bold text-xl">{participants}</span>
+                  <span className="font-bold text-xl">{participantsCount}</span>
                   <span className="text-secondary">Participants</span>
                 </div>
               </div>
@@ -149,7 +168,7 @@ const ChallengeDetails = () => {
                 Ready to make an impact?
               </h3>
               <p className="text-secondary mb-4">
-                {participants} others have joined in this challenge
+                Start from today. Tommorow is far away.
               </p>
               <button className="btn btn-primary" onClick={handleJoinChallenge}>
                 Join Challenge Now
