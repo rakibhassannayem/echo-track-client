@@ -35,10 +35,12 @@ const ChallengeDetails = () => {
       return;
     }
 
+    const status = duration === 0 ? "Finished" : "Ongoing";
+
     const userChallengeInfo = {
       userEmail: user.email,
       challengeId: _id,
-      status: "Ongoing",
+      status,
       progress: 0,
       joinDate: new Date().toISOString(),
     };

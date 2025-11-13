@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <div className="bg-base-200 border-t border-t-emerald-500">
+    <div className="bg-base-200 border-t border-t-emerald-500 px-3">
       <footer className="footer sm:footer-horizontal py-10 container mx-auto justify-between">
         <div>
           <Link

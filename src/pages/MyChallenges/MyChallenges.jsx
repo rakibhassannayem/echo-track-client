@@ -10,6 +10,11 @@ const MyChallenges = () => {
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const deleteChallenge = (id) => {
+    const newChallenges = challenges.filter((c) => c._id !== id);
+    setChallenges(newChallenges);
+  };
+
   useEffect(() => {
     fetch(
       `https://echo-track-server.vercel.app/my-challenges?email=${user.email}`
@@ -43,7 +48,7 @@ const MyChallenges = () => {
       {challenges.length ? (
         <div className="grid md:grid-cols-3  gap-5">
           {challenges.map((challenge, i) => (
-            <MyChallengeCard key={i} challenge={challenge} />
+            <MyChallengeCard key={i} challenge={challenge} deleteChallenge={deleteChallenge} />
           ))}
         </div>
       ) : (

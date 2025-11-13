@@ -4,7 +4,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
-const MyChallengeCard = ({ challenge }) => {
+const MyChallengeCard = ({ challenge, deleteChallenge }) => {
   const {
     _id,
     title,
@@ -39,6 +39,7 @@ const MyChallengeCard = ({ challenge }) => {
               text: "Your challenge has been deleted.",
               icon: "success",
             });
+            deleteChallenge(_id)
           })
           .catch((err) => {
             console.log(err);
