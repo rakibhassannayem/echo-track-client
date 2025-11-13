@@ -31,20 +31,20 @@ const Navbar = () => {
     </>
   );
 
-  const profileImgLinks = (
-    <>
-      <li>
-        <NavLink to={"/profile"}>Profile</NavLink>
-      </li>
-      {user && (
-        <>
-          <li>
-            <NavLink to={"/my-challenges"}>My Challenge</NavLink>
-          </li>
-        </>
-      )}
-    </>
-  );
+  // const profileImgLinks = (
+  //   <>
+  //     <li>
+  //       <NavLink to={"/profile"}>Profile</NavLink>
+  //     </li>
+  //     {user && (
+  //       <>
+  //         <li>
+  //           <NavLink to={"/my-challenges"}>My Challenge</NavLink>
+  //         </li>
+  //       </>
+  //     )}
+  //   </>
+  // );
 
   const handleLogout = () => {
     logOut()
@@ -139,7 +139,7 @@ const Navbar = () => {
                 tabIndex="-1"
                 className="menu menu-md dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
               >
-                {profileImgLinks}
+                {/* {profileImgLinks} */}
 
                 <li>
                   <button

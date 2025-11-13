@@ -2,15 +2,16 @@ import { AiOutlineLike } from "react-icons/ai";
 import { FaRegUserCircle } from "react-icons/fa";
 
 const TipsCard = ({ tip }) => {
-  const { title, category, content, authorName, upvotes } = tip;
+  const { title, content, authorName, upvotes, createdAt } = tip;
   
   return (
     <div className="card bg-base-100 shadow-sm cursor-pointer hover:scale-105 transition">
       <div className="card-body py-2 px-3">
-        <h2 className="card-title text-primary justify-between">
+        <h2 className="card-title justify-between">
           {title}
-          <div className="bg-emerald-50 text-secondary rounded-full px-3 py-1 text-sm">
-            {category}
+          <div className="flex text-primary items-center gap-1">
+            <AiOutlineLike />
+            {upvotes}
           </div>
         </h2>
 
@@ -22,8 +23,7 @@ const TipsCard = ({ tip }) => {
             {authorName}
           </div>
           <div className="flex items-center gap-1">
-            <AiOutlineLike />
-            {upvotes}
+            {new Date(createdAt).toLocaleDateString()}
           </div>
         </div>
       </div>

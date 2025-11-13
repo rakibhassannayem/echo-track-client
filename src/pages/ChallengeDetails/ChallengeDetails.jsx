@@ -75,19 +75,19 @@ const ChallengeDetails = () => {
   return (
     <div>
       {/* hero img */}
-      <div className="relative h-screen">
+      <div className="relative h-screen max-h-[70vh]">
         <img
           src={imageUrl}
           alt={title}
-          className="md:w-full h-full object-cover rounded-2xl"
+          className="w-full h-full object-cover rounded-2xl"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-white via-white/50 to-transparent" />
       </div>
 
-      <div className="container mx-auto px-4 -mt-90 relative z-10">
+      <div className="container mx-auto px-4 -mt-70 relative z-10">
         <div className="max-w-4xl mx-auto rounded-xl">
           <Link to={"/challenges"}>
-            <button className="btn bg-primary/20 border-0 text-lg font-bold mb-4 flex items-center hover:-translate-x-3 transition">
+            <button className="btn btn-ghost border-0 text-lg font-bold mb-4 flex items-center hover:-translate-x-3 transition">
               <BsArrowLeft size={18} />
               Back to Challenges
             </button>
