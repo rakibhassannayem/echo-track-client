@@ -1,4 +1,3 @@
-import { useLoaderData } from "react-router";
 import Banner from "../../components/Banner/Banner";
 import Stats from "../../components/Stats/Stats";
 import ChallengeCard from "../../components/ChallengeCard/ChallengeCard";
@@ -10,11 +9,9 @@ import { RiTeamLine } from "react-icons/ri";
 import SkeletonLoading from "../../components/SkeletonLoading/SkeletonLoading";
 
 const Home = () => {
-  const challenges = useLoaderData();
   const [tipsData, setTipsData] = useState([]);
   const [activeChallengesData, setActiveChallengesData] = useState([]);
   const [eventsData, setEventsData] = useState([]);
-  const challengeImg = challenges.map((challenge) => challenge.imageUrl);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -46,7 +43,7 @@ const Home = () => {
 
   return (
     <div className="space-y-10">
-      <Banner challengeImg={challengeImg} />
+      <Banner />
       <Stats activeCount={activeChallengesData.length} />
       {/* Active Challenges */}
       <div className="rounded-xl">

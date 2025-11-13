@@ -24,8 +24,6 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: () => fetch("http://localhost:3000/challenges"),
-        hydrateFallbackElement: <LoadingSpinner />,
       },
       {
         path: "/challenges",
@@ -42,7 +40,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/challenges/details/:id",
+        path: "/challenge/details/:id",
         element: <ChallengeDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/challenge/${params.id}`),

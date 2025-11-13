@@ -37,6 +37,7 @@ const AddChallenge = () => {
       .then((res) => res.json())
       .then(() => {
         toast.success("challenge added successfully!");
+        navigate('/my-challenges')
       })
       .catch(() => {
         toast.error("Failed to add the challenge!");

@@ -10,24 +10,32 @@ const ChallengeCard = ({ challenge }) => {
     description,
     duration,
     participants,
+    impactMetric,
   } = challenge;
   return (
     <Link
-      to={`/challenges/details/${_id}`}
+      to={`/challenge/details/${_id}`}
       className="group card bg-base-100 shadow-sm cursor-pointer hover:shadow-2xl"
     >
       <figure>
-        <img className="w-full h-52 object-cover hover:scale-110 transition" src={imageUrl} alt="Shoes" />
+        <img
+          className="w-full h-52 object-cover hover:scale-110 transition"
+          src={imageUrl}
+          alt="Shoes"
+        />
       </figure>
       <div className="card-body py-2 px-3">
-        <h2 className="card-title justify-between group-hover:text-green-500">
-          {title}
-          <div className="bg-green-50 text-secondary rounded-full px-3 py-1 text-sm">
-            {category}
+        <div>
+          <div className="card-title justify-between group-hover:text-green-500">
+            <span className="font-bold">{title}</span>
+            <div className="bg-green-50 text-secondary rounded-full px-3 py-1 text-sm">
+              {category}
+            </div>
           </div>
-        </h2>
+          <span className="text-secondary">{impactMetric}</span>
+        </div>
 
-        <p className="text-secondary text-base">{description}</p>
+        <p className="text-secondary text-lg">{description}</p>
 
         <div className="card-actions justify-between text-base text-secondary">
           <div className="flex items-center gap-1">
