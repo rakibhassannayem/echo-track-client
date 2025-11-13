@@ -1,34 +1,47 @@
-import { use } from "react";
-import { BiPlus } from "react-icons/bi";
-import { useNavigate } from "react-router";
-import { AuthContext } from "../../context/AuthContext";
+import { GrDocumentUpdate } from "react-icons/gr";
+import { useLoaderData, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
-const AddChallenge = () => {
+const UpdateChallenge = () => {
+  const challenge = useLoaderData();
   const navigate = useNavigate();
-  const { user } = use(AuthContext);
 
-  const handleCreateChallange = (e) => {
+  const {
+    _id,
+    title,
+    imageUrl,
+    category,
+    description,
+    duration,
+    target,
+    startDate,
+    endDate,
+    impactMetric,
+    createdAt,
+    createdBy,
+  } = challenge;
+
+  const handleUpdateChallange = (e) => {
     e.preventDefault();
 
     const formData = {
       title: e.target.title.value,
       category: e.target.category.value,
       description: e.target.description.value,
-      duration: 0,
+      duration: duration,
       target: e.target.target.value,
       participants: 0,
       impactMetric: e.target.impactMetric.value,
-      createdBy: user.email,
+      createdBy: createdBy,
       startDate: e.target.startDate.value,
       endDate: e.target.endDate.value,
       imageUrl: e.target.imageUrl.value,
-      createdAt: new Date(),
+      createdAt: createdAt,
       updatedAt: new Date(),
     };
 
-    fetch("http://localhost:3000/challenges", {
-      method: "POST",
+    fetch(`http://localhost:3000/challenges/${_id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -36,10 +49,10 @@ const AddChallenge = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        toast.success("challenge added successfully!");
+        toast.success("challenge updated successfully!");
       })
       .catch(() => {
-        toast.error("Failed to add the challenge!");
+        toast.error("Failed to update the challenge!");
       });
   };
 
@@ -48,9 +61,9 @@ const AddChallenge = () => {
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-5">
         {/* Header */}
         <div className="mb-4">
-          <h1 className="text-3xl font-bold flex items-center">
-            <BiPlus size={30} />
-            Create New Challenge
+          <h1 className="text-3xl font-bold flex items-center gap-2">
+            <GrDocumentUpdate size={24} />
+            Update Challenge
           </h1>
           <p className="text-secondary mt-1">
             Start a new eco-challenge for the community
@@ -58,7 +71,7 @@ const AddChallenge = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleCreateChallange} className="space-y-3">
+        <form onSubmit={handleUpdateChallange} className="space-y-3">
           {/* title + category */}
           <div className="flex gap-4 flex-col md:flex-row">
             <div className="flex-1">
@@ -68,6 +81,7 @@ const AddChallenge = () => {
               <input
                 name="title"
                 type="text"
+                defaultValue={title}
                 placeholder="e.g., Plastic-Free July"
                 required
                 className="mt-1 w-full border text-secondary border-gray-300 bg-base-200 font-medium rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
@@ -79,7 +93,7 @@ const AddChallenge = () => {
                 Category *
               </label>
               <select
-              defaultValue={""}
+                defaultValue={category}
                 name="category"
                 required
                 className="mt-1 select select-bordered w-full text-secondary font-medium focus:ring-primary  bg-base-200"
@@ -104,6 +118,7 @@ const AddChallenge = () => {
               Description *
             </label>
             <textarea
+              defaultValue={description}
               name="description"
               placeholder="Describe the challenge goals and activities..."
               rows={3}
@@ -119,6 +134,7 @@ const AddChallenge = () => {
                 Start Date *
               </label>
               <input
+                defaultValue={new Date(startDate).toISOString().split("T")[0]}
                 name="startDate"
                 type="date"
                 required
@@ -131,6 +147,7 @@ const AddChallenge = () => {
                 End Date *
               </label>
               <input
+                defaultValue={new Date(endDate).toISOString().split("T")[0]}
                 name="endDate"
                 type="date"
                 required
@@ -146,6 +163,7 @@ const AddChallenge = () => {
                 Target Goal *
               </label>
               <input
+                defaultValue={target}
                 name="target"
                 type="text"
                 placeholder="e.g., Reduce plastic waste"
@@ -159,6 +177,7 @@ const AddChallenge = () => {
                 Impact Metric *
               </label>
               <input
+                defaultValue={impactMetric}
                 name="impactMetric"
                 type="text"
                 placeholder="e.g., kg plastic saved"
@@ -174,6 +193,7 @@ const AddChallenge = () => {
               Image URL
             </label>
             <input
+              defaultValue={imageUrl}
               name="imageUrl"
               type="url"
               placeholder="https://example.com/image.jpg"
@@ -184,7 +204,7 @@ const AddChallenge = () => {
           {/* Buttons */}
           <div className="flex gap-4">
             <button type="submit" className="flex-1 btn btn-primary">
-              Create Challenge
+              Update Challenge
             </button>
             <button
               type="button"
@@ -200,4 +220,4 @@ const AddChallenge = () => {
   );
 };
 
-export default AddChallenge;
+export default UpdateChallenge;

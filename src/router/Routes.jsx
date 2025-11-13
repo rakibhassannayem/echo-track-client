@@ -13,6 +13,7 @@ import AddChallenge from "../pages/AddChallenge/AddChallenge";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import ActivityDetails from "../pages/ActivityDetails/ActivityDetails";
 import MyChallenges from "../pages/MyChallenges/MyChallenges";
+import UpdateChallenge from "../pages/UpdateChallenge/UpdateChallenge";
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,17 @@ export const router = createBrowserRouter([
             <MyChallenges />
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/update-challenge/:id",
+        element: (
+          <PrivateRoutes>
+            <UpdateChallenge />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/challenge/${params.id}`),
+        hydrateFallbackElement: <LoadingSpinner />,
       },
       {
         path: "/login",

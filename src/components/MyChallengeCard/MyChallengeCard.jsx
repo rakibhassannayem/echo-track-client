@@ -1,7 +1,7 @@
-import React from "react";
-import { FiDelete, FiEdit } from "react-icons/fi";
+import { FiEdit } from "react-icons/fi";
 import { MdOutlineCalendarToday, MdOutlinePeopleAlt } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from "react-router";
 
 const MyChallengeCard = ({ challenge }) => {
   const {
@@ -42,10 +42,10 @@ const MyChallengeCard = ({ challenge }) => {
           </div>
         </div>
         <div className="flex gap-3">
-          <button className="btn rounded-lg flex-1">
+          <Link to={`/update-challenge/${_id}`} className="btn rounded-lg flex-1">
             <FiEdit />
             Edit
-          </button>
+          </Link>
           <button className="btn rounded-lg bg-red-500 hover:bg-red-600 text-white flex-1">
             <RiDeleteBin6Line />
             Delete
