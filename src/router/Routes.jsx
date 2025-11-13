@@ -12,6 +12,7 @@ import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 import AddChallenge from "../pages/AddChallenge/AddChallenge";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import ActivityDetails from "../pages/ActivityDetails/ActivityDetails";
+import MyChallenges from "../pages/MyChallenges/MyChallenges";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +64,14 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/userChallenges/${params.id}`),
         hydrateFallbackElement: <LoadingSpinner />,
+      },
+      {
+        path: "/my-challenges",
+        element: (
+          <PrivateRoutes>
+            <MyChallenges />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",

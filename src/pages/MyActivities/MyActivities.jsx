@@ -93,7 +93,7 @@ const MyActivities = () => {
       </div>
 
       {/* my challanges */}
-      <h1 className="headings mb-3">My Challenges</h1>
+      <h1 className="headings mb-3">MY Challenge Progress</h1>
       <div className="space-y-3">
         {challenges.map((challenge, i) => (
           <MyActivitiesCard key={i} challenge={challenge} />

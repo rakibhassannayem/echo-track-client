@@ -25,6 +25,22 @@ const Navbar = () => {
           <li>
             <NavLink to={"/add-challenge"}>Add Challenge</NavLink>
           </li>
+
+        </>
+      )}
+    </>
+  );
+
+  const profileImgLinks = (
+    <>
+      <li>
+        <NavLink to={"/profile"}>Profile</NavLink>
+      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to={"/my-challenges"}>My Challenge</NavLink>
+          </li>
         </>
       )}
     </>
@@ -123,23 +139,7 @@ const Navbar = () => {
                 tabIndex="-1"
                 className="menu menu-md dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
               >
-                <li>
-                  <Link
-                    to={"/profile"}
-                    className="hover:bg-primary hover:text-white"
-                  >
-                    Profile
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to={"/my-activity"}
-                    className="hover:bg-primary hover:text-white"
-                  >
-                    My Activity
-                  </Link>
-                </li>
+                {profileImgLinks}
 
                 <li>
                   <button

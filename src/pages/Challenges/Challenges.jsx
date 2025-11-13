@@ -6,12 +6,7 @@ const Challenges = () => {
 
   return (
     <div>
-      <div className="mb-5">
-        <h2 className="text-primary headings">Sustainability Challenges</h2>
-        <p className="text-secondary">
-          Join challenges and make a measurable environmental impact
-        </p>
-      </div>
+      profileImgLinks
       <div className="grid md:grid-cols-3 gap-5">
         {challenges.map((challenge) => (
           <ChallengeCard
