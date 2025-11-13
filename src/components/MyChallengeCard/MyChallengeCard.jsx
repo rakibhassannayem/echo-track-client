@@ -2,6 +2,7 @@ import { FiEdit } from "react-icons/fi";
 import { MdOutlineCalendarToday, MdOutlinePeopleAlt } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const MyChallengeCard = ({ challenge }) => {
   const {
@@ -13,11 +14,41 @@ const MyChallengeCard = ({ challenge }) => {
     duration,
     participants,
   } = challenge;
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/challenges/${_id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then(() => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your challenge has been deleted.",
+              icon: "success",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
+  };
+
   return (
-    <div
-      to={`/challenges/details/${_id}`}
-      className="group card bg-base-100 shadow-sm cursor-pointer hover:shadow-2xl"
-    >
+    <div className="group card bg-base-100 shadow-sm cursor-pointer hover:shadow-2xl">
       <figure>
         <img className="w-full h-52 object-cover" src={imageUrl} alt="Shoes" />
       </figure>
@@ -42,15 +73,20 @@ const MyChallengeCard = ({ challenge }) => {
           </div>
         </div>
         <div className="flex gap-3">
-          <Link to={`/update-challenge/${_id}`} className="btn rounded-lg flex-1">
+          <Link
+            to={`/update-challenge/${_id}`}
+            className="btn rounded-lg flex-1"
+          >
             <FiEdit />
             Edit
           </Link>
-          <button className="btn rounded-lg bg-red-500 hover:bg-red-600 text-white flex-1">
+          <button
+            onClick={handleDelete}
+            className="btn rounded-lg bg-red-500 hover:bg-red-600 text-white flex-1"
+          >
             <RiDeleteBin6Line />
             Delete
           </button>
-
         </div>
       </div>
     </div>

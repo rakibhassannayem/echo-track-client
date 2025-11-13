@@ -31,7 +31,7 @@ const MyChallenges = () => {
             Challenges you've created for the community
           </p>
         </div>
-        <Link to={'/add-challenge'}>
+        <Link to={"/add-challenge"}>
           <button className="btn bg-primary text-white font-bold flex items-center">
             <BiPlus size={30} />
             Add New Challenge
@@ -39,9 +39,12 @@ const MyChallenges = () => {
         </Link>
       </div>
       {challenges.length ? (
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3  gap-5">
           {challenges.map((challenge, i) => (
-            <MyChallengeCard key={i} challenge={challenge} />
+            <MyChallengeCard
+              key={i}
+              challenge={challenge}
+            />
           ))}
         </div>
       ) : (

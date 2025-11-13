@@ -3,9 +3,10 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Login = () => {
-  const { login, signinwithGoogle } = use(AuthContext);
+  const { login, signinwithGoogle, loading } = use(AuthContext);
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
@@ -51,11 +52,11 @@ const Login = () => {
       <div className="flex flex-col items-center">
         <img className="w-20" src="/logo.png" alt="" />
         <h2 className="headings">Login to EcoTrack</h2>
-        <p className="text-secondary mt-2">
+        <p className="text-secondary mt-2 text-center">
           Welcome back! Continue your sustainability journey
         </p>
       </div>
-      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-lg mt-5 border p-4 pt-2">
+      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box min-w-1/3 mt-5 border p-4 pt-2">
         <div className="mb-2">
           <h3 className="headings text-xl!">Create Account</h3>
           <p className="text-secondary text-sm">
@@ -109,7 +110,13 @@ const Login = () => {
             </p>
           )}
 
-          <button className="btn btn-primary mt-4 w-full">Login</button>
+          <button
+            className={`btn ${
+              loading ? "bg-white" : "btn-primary"
+            } mt-4 w-full`}
+          >
+            {loading ? <LoadingSpinner /> : "Login"}
+          </button>
         </form>
 
         <div className="divider divider-success text-secondary text-sm">
@@ -148,7 +155,7 @@ const Login = () => {
               ></path>
             </g>
           </svg>
-          Google Login
+          {loading ? <LoadingSpinner /> : "Google Login"}
         </button>
 
         <p className="text-center text-secondary text-sm font-medium">

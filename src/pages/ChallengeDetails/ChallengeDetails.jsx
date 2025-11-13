@@ -3,13 +3,14 @@ import { BsArrowLeft } from "react-icons/bs";
 import { CiCalendar } from "react-icons/ci";
 import { GoGoal } from "react-icons/go";
 import { IoIosPeople } from "react-icons/io";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
 
 const ChallengeDetails = () => {
   const challenge = useLoaderData();
   const { user } = use(AuthContext);
+  const navigate = useNavigate();
   const [participantsCount, setParticipantsCount] = useState(
     challenge.participants
   );
@@ -28,6 +29,10 @@ const ChallengeDetails = () => {
 
   const handleJoinChallenge = (e) => {
     e.preventDefault();
+    if (!user) {
+      navigate('/login')
+      return
+    }
 
     const userChallengeInfo = {
       userEmail: user.email,
@@ -70,18 +75,18 @@ const ChallengeDetails = () => {
   return (
     <div>
       {/* hero img */}
-      <div className="relative h-screen overflow-hidden">
+      <div className="relative h-screen">
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-full object-cover rounded-2xl"
+          className="md:w-full h-full object-cover rounded-2xl"
         />
         <div className="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent" />
       </div>
 
       <div className="container mx-auto px-4 -mt-90 relative z-10">
-        <div className="max-w-4xl  mx-auto rounded-xl">
-          <Link to={'/challenges'}>
+        <div className="max-w-4xl mx-auto rounded-xl">
+          <Link to={"/challenges"}>
             <button className="btn bg-primary/20 border-0 text-lg font-bold mb-4 flex items-center hover:-translate-x-3 transition">
               <BsArrowLeft size={18} />
               Back to Challenges

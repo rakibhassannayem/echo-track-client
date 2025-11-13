@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Register = () => {
-  const { createUser, updateUser, setUser, signinwithGoogle } =
+  const { createUser, updateUser, setUser, signinwithGoogle, loading } =
     use(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -66,7 +67,7 @@ const Register = () => {
         </p>
       </div>
 
-      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-lg mt-5 border p-4 pt-2">
+      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box min-w-1/3 mt-5 border p-4 pt-2">
         <div className="mb-2">
           <h3 className="headings text-xl!">Create Account</h3>
           <p className="text-secondary text-sm">
@@ -131,7 +132,13 @@ const Register = () => {
             </p>
           )}
 
-          <button className="btn btn-primary mt-4 w-full">Register</button>
+          <button
+            className={`btn ${
+              loading ? "bg-white" : "btn-primary"
+            } mt-4 w-full`}
+          >
+            {loading ? <LoadingSpinner /> : "Register"}
+          </button>
         </form>
 
         <div className="divider divider-success text-secondary text-sm">
@@ -170,7 +177,7 @@ const Register = () => {
               ></path>
             </g>
           </svg>
-          Google Register
+          {loading ? <LoadingSpinner /> : "Google Register"}
         </button>
 
         <p className="text-center text-secondary text-sm font-medium">
