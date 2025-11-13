@@ -11,40 +11,81 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-primary text-white font-bold"
+              : "font-medium hover:bg-primary hover:text-white hover:font-bold"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/challenges"}>Challenges</NavLink>
+        <NavLink
+          to={"/challenges"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-primary text-white font-bold"
+              : "font-medium hover:bg-primary hover:text-white hover:font-bold"
+          }
+        >
+          Challenges
+        </NavLink>
       </li>
 
       {user && (
         <>
           <li>
-            <NavLink to={"/my-activities"}>My Activites</NavLink>
+            <NavLink
+              to={"/my-activities"}
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-primary text-white font-bold"
+                  : "font-medium hover:bg-primary hover:text-white hover:font-bold"
+              }
+            >
+              My Activites
+            </NavLink>
           </li>
           <li>
-            <NavLink to={"/add-challenge"}>Add Challenge</NavLink>
+            <NavLink
+              to={"/add-challenge"}
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-primary text-white font-bold"
+                  : "font-medium hover:bg-primary hover:text-white hover:font-bold"
+              }
+            >
+              Add Challenge
+            </NavLink>
           </li>
-
         </>
       )}
     </>
   );
 
-  // const profileImgLinks = (
-  //   <>
-  //     <li>
-  //       <NavLink to={"/profile"}>Profile</NavLink>
-  //     </li>
-  //     {user && (
-  //       <>
-  //         <li>
-  //           <NavLink to={"/my-challenges"}>My Challenge</NavLink>
-  //         </li>
-  //       </>
-  //     )}
-  //   </>
-  // );
+  const profileImgLinks = (
+    <>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to={"/my-challenges"}
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-primary text-white font-bold"
+                  : "font-medium hover:bg-primary hover:text-white hover:font-bold"
+              }
+            >
+              My Challenge
+            </NavLink>
+          </li>
+        </>
+      )}
+    </>
+  );
 
   const handleLogout = () => {
     logOut()
@@ -76,7 +117,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-y-1"
             >
               {links}
             </ul>
@@ -87,7 +128,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1 space-x-1">{links}</ul>
         </div>
         <div className="navbar-end space-x-2">
           {/* theme switch */}
@@ -137,14 +178,14 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-md dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+                className="menu menu-md dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow space-y-1"
               >
-                {/* {profileImgLinks} */}
+                {profileImgLinks}
 
                 <li>
                   <button
                     onClick={handleLogout}
-                    className="text-red-500 hover:bg-primary hover:text-white"
+                    className="text-red-500 font-medium hover:bg-primary hover:text-white"
                   >
                     Logout
                   </button>

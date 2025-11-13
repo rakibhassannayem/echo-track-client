@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import EventsCard from "../../components/EventsCard/EventsCard";
 import { BiCheckCircle, BiLeaf } from "react-icons/bi";
 import { RiTeamLine } from "react-icons/ri";
+import SkeletonLoading from "../../components/SkeletonLoading/SkeletonLoading";
 
 const Home = () => {
   const challenges = useLoaderData();
@@ -14,23 +15,33 @@ const Home = () => {
   const [activeChallengesData, setActiveChallengesData] = useState([]);
   const [eventsData, setEventsData] = useState([]);
   const challengeImg = challenges.map((challenge) => challenge.imageUrl);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3000/active-challenges")
       .then((res) => res.json())
-      .then((data) => setActiveChallengesData(data));
+      .then((data) => {
+        setActiveChallengesData(data);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
     fetch("http://localhost:3000/tips")
       .then((res) => res.json())
-      .then((data) => setTipsData(data));
+      .then((data) => {
+        setTipsData(data);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
     fetch("http://localhost:3000/upcoming-events")
       .then((res) => res.json())
-      .then((data) => setEventsData(data));
+      .then((data) => {
+        setEventsData(data);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -69,8 +80,14 @@ const Home = () => {
           </p>
         </div>
 
-        {!tipsData ? (
-          <p>Loading....</p>
+        {loading ? (
+          <div className="grid md:grid-cols-3 gap-5">
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+          </div>
         ) : (
           <div className="grid md:grid-cols-3 gap-5">
             {tipsData.map((tip) => (
@@ -88,8 +105,14 @@ const Home = () => {
           </p>
         </div>
 
-        {!eventsData ? (
-          <p>Loading....</p>
+        {loading ? (
+          <div className="grid md:grid-cols-3 gap-5">
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+          </div>
         ) : (
           <div className="grid md:grid-cols-4 gap-5">
             {eventsData.map((event) => (
@@ -112,7 +135,9 @@ const Home = () => {
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
                 <BiLeaf className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="font-semibold text-lg text-primary">Protect Our Planet</h3>
+              <h3 className="font-semibold text-lg text-primary">
+                Protect Our Planet
+              </h3>
               <p className="text-secondary">
                 Reduce your carbon footprint and preserve natural resources for
                 future generations
@@ -122,7 +147,9 @@ const Home = () => {
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto">
                 <RiTeamLine className="w-8 h-8 text-accent" />
               </div>
-              <h3 className="font-semibold text-lg text-primary">Build Community</h3>
+              <h3 className="font-semibold text-lg text-primary">
+                Build Community
+              </h3>
               <p className="text-secondary">
                 Connect with like-minded individuals and inspire others through
                 your actions
@@ -132,7 +159,9 @@ const Home = () => {
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
                 <BiCheckCircle className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="font-semibold text-lg text-primary">Track Progress</h3>
+              <h3 className="font-semibold text-lg text-primary">
+                Track Progress
+              </h3>
               <p className="text-secondary">
                 Measure your impact with real data and celebrate your
                 environmental wins
@@ -155,7 +184,9 @@ const Home = () => {
             <div className="w-12 h-12 rounded-full border-3 border-primary text-primary flex items-center justify-center mx-auto text-xl font-bold">
               1
             </div>
-            <h3 className="font-semibold text-lg text-primary">Join a Challenge</h3>
+            <h3 className="font-semibold text-lg text-primary">
+              Join a Challenge
+            </h3>
             <p className="text-secondary">
               Browse our challenges and pick one that fits your lifestyle and
               goals
@@ -165,7 +196,9 @@ const Home = () => {
             <div className="w-12 h-12 rounded-full border-3 border-primary text-primary flex items-center justify-center mx-auto text-xl font-bold">
               2
             </div>
-            <h3 className="font-semibold text-lg text-primary">Track Your Progress</h3>
+            <h3 className="font-semibold text-lg text-primary">
+              Track Your Progress
+            </h3>
             <p className="text-secondary">
               Log your daily actions and watch your environmental impact grow
             </p>
@@ -174,7 +207,9 @@ const Home = () => {
             <div className="w-12 h-12 rounded-full border-3 border-primary text-primary flex items-center justify-center mx-auto text-xl font-bold">
               3
             </div>
-            <h3 className="font-semibold text-lg text-primary">Share & Inspire</h3>
+            <h3 className="font-semibold text-lg text-primary">
+              Share & Inspire
+            </h3>
             <p className="text-secondary">
               Share your journey and tips with the community to inspire others
             </p>

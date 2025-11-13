@@ -14,6 +14,7 @@ import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import ActivityDetails from "../pages/ActivityDetails/ActivityDetails";
 import MyChallenges from "../pages/MyChallenges/MyChallenges";
 import UpdateChallenge from "../pages/UpdateChallenge/UpdateChallenge";
+import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
 
 export const router = createBrowserRouter([
   {
@@ -64,7 +65,7 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/userChallenges/${params.id}`),
-        hydrateFallbackElement: <LoadingSpinner />,
+        hydrateFallbackElement: <SkeletonLoading />,
       },
       {
         path: "/my-challenges",

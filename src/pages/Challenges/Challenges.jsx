@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ChallengeCard from "../../components/ChallengeCard/ChallengeCard";
 import { FaFilter } from "react-icons/fa";
+import SkeletonLoading from "../../components/SkeletonLoading/SkeletonLoading";
 
 const categories = [
   "All Categories",
@@ -49,7 +50,11 @@ const Challenges = () => {
 
         {/* Filter Dropdown */}
         <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn m-1 px-10 flex items-center gap-2">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 px-10 flex items-center gap-2"
+          >
             <FaFilter size={14} />
             {category}
           </div>
@@ -66,10 +71,13 @@ const Challenges = () => {
         </div>
       </div>
 
-
       {loading ? (
-        <div className="flex justify-center mt-10">
-          <span className="loading loading-spinner text-success"></span>
+        <div className="grid md:grid-cols-3 gap-5">
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
         </div>
       ) : (
         <div className="grid md:grid-cols-3 gap-5">
