@@ -11,7 +11,9 @@ const MyChallenges = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-challenges?email=${user.email}`)
+    fetch(
+      `https://echo-track-server.vercel.app/my-challenges?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setChallenges(data);
@@ -41,10 +43,7 @@ const MyChallenges = () => {
       {challenges.length ? (
         <div className="grid md:grid-cols-3  gap-5">
           {challenges.map((challenge, i) => (
-            <MyChallengeCard
-              key={i}
-              challenge={challenge}
-            />
+            <MyChallengeCard key={i} challenge={challenge} />
           ))}
         </div>
       ) : (

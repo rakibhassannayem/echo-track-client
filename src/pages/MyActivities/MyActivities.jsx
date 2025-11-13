@@ -15,7 +15,9 @@ const MyActivities = () => {
   const [completedCount, setCompletedCount] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-activities?email=${user.email}`)
+    fetch(
+      `https://echo-track-server.vercel.app/my-activities?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setChallengeCount(data.length);

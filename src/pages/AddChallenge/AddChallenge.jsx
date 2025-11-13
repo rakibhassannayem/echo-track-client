@@ -27,7 +27,7 @@ const AddChallenge = () => {
       updatedAt: new Date(),
     };
 
-    fetch("http://localhost:3000/challenges", {
+    fetch("https://echo-track-server.vercel.app/challenges", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const AddChallenge = () => {
       .then((res) => res.json())
       .then(() => {
         toast.success("challenge added successfully!");
-        navigate('/my-challenges')
+        navigate("/my-challenges");
       })
       .catch(() => {
         toast.error("Failed to add the challenge!");
@@ -80,7 +80,7 @@ const AddChallenge = () => {
                 Category *
               </label>
               <select
-              defaultValue={""}
+                defaultValue={""}
                 name="category"
                 required
                 className="mt-1 select select-bordered w-full text-secondary font-medium focus:ring-primary  bg-base-200"

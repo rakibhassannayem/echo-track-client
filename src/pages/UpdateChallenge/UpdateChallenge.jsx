@@ -40,7 +40,7 @@ const UpdateChallenge = () => {
       updatedAt: new Date(),
     };
 
-    fetch(`http://localhost:3000/challenges/${_id}`, {
+    fetch(`https://echo-track-server.vercel.app/challenges/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

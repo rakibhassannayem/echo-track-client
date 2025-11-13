@@ -15,7 +15,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/active-challenges")
+    fetch("https://echo-track-server.vercel.app/active-challenges")
       .then((res) => res.json())
       .then((data) => {
         setActiveChallengesData(data);
@@ -24,7 +24,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/tips")
+    fetch("https://echo-track-server.vercel.app/tips")
       .then((res) => res.json())
       .then((data) => {
         setTipsData(data);
@@ -33,7 +33,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/upcoming-events")
+    fetch("https://echo-track-server.vercel.app/upcoming-events")
       .then((res) => res.json())
       .then((data) => {
         setEventsData(data);

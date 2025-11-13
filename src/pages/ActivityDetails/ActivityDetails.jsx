@@ -8,16 +8,10 @@ const ActivityDetails = () => {
   const { _id, progress, challengeId } = useLoaderData();
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {
-    imageUrl,
-    title,
-    description,
-    target,
-    category,
-  } = challenges;
+  const { imageUrl, title, description, target, category } = challenges;
 
   useEffect(() => {
-    fetch(`http://localhost:3000/challenge/${challengeId}`)
+    fetch(`https://echo-track-server.vercel.app/challenge/${challengeId}`)
       .then((res) => res.json())
       .then((data) => {
         setChallenges(data);

@@ -20,10 +20,13 @@ const MyActivitiesCard = ({ challenge }) => {
   const updateProgress = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3000/userChallenges/${challengeId}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-    })
+    fetch(
+      `https://echo-track-server.vercel.app/userChallenges/${challengeId}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+      }
+    )
       .then((res) => res.json())
       .then(() => {
         setProgressCount((prev) => prev + 1);

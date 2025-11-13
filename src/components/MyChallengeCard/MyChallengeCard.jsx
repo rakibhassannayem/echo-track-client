@@ -26,7 +26,7 @@ const MyChallengeCard = ({ challenge }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/challenges/${_id}`, {
+        fetch(`https://echo-track-server.vercel.app/challenges/${_id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

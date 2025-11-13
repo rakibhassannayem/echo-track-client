@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
       {
         path: "/challenges",
         element: <Challenges />,
-        loader: () => fetch("http://localhost:3000/challenges"),
+        loader: () => fetch("https://echo-track-server.vercel.app/challenges"),
         hydrateFallbackElement: <LoadingSpinner />,
       },
       {
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
         path: "/challenge/details/:id",
         element: <ChallengeDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/challenge/${params.id}`),
+          fetch(`https://echo-track-server.vercel.app/challenge/${params.id}`),
         hydrateFallbackElement: <LoadingSpinner />,
       },
       {
@@ -62,7 +62,9 @@ export const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/userChallenges/${params.id}`),
+          fetch(
+            `https://echo-track-server.vercel.app/userChallenges/${params.id}`
+          ),
         hydrateFallbackElement: <SkeletonLoading />,
       },
       {
@@ -81,7 +83,7 @@ export const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/challenge/${params.id}`),
+          fetch(`https://echo-track-server.vercel.app/challenge/${params.id}`),
         hydrateFallbackElement: <LoadingSpinner />,
       },
       {

@@ -29,9 +29,10 @@ const ChallengeDetails = () => {
 
   const handleJoinChallenge = (e) => {
     e.preventDefault();
+
     if (!user) {
-      navigate('/login')
-      return
+      navigate("/login");
+      return;
     }
 
     const userChallengeInfo = {
@@ -42,7 +43,7 @@ const ChallengeDetails = () => {
       joinDate: new Date().toISOString(),
     };
 
-    fetch("http://localhost:3000/userChallenges", {
+    fetch("https://echo-track-server.vercel.app/userChallenges", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,27 +52,31 @@ const ChallengeDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.result.insertedId) {
-          fetch(`http://localhost:3000/challenges/${_id}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-          })
-            .then((res) => res.json())
-            .then(() => {
-              setParticipantsCount((prev) => prev + 1);
-              toast.success("Joined Successfully!");
-            })
-            .catch(() => {
-              toast.error("Failed to update participants!");
-            });
-        } else {
-          toast.error("Joining failed!");
+        if (!data.success) {
+          toast.error(
+            data.message || "You have already joined this challenge!"
+          );
+          return;
         }
+
+        fetch(`https://echo-track-server.vercel.app/challenges/${_id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+        })
+          .then((res) => res.json())
+          .then(() => {
+            setParticipantsCount((prev) => prev + 1);
+            toast.success("Joined Successfully!");
+          })
+          .catch(() => {
+            toast.error("Failed to update participants!");
+          });
       })
       .catch(() => {
-        toast.error("joining failed!");
+        toast.error("Joining failed! Please try again later.");
       });
   };
+
   return (
     <div>
       {/* hero img */}

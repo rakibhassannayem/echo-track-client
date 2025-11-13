@@ -25,7 +25,9 @@ const Challenges = () => {
           category !== "All Categories"
             ? `?category=${encodeURIComponent(category)}`
             : "";
-        const res = await fetch(`http://localhost:3000/challenges${query}`);
+        const res = await fetch(
+          `https://echo-track-server.vercel.app/challenges${query}`
+        );
         const data = await res.json();
         setChallenges(data);
       } catch (error) {
