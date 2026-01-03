@@ -13,7 +13,7 @@ const Stats = ({ activeCount }) => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-between gap-5 p-5">
-        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
+        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
           <div className="bg-primary/10 rounded-full p-3">
             <FaTasks color="green" size={29} />
           </div>
@@ -24,7 +24,7 @@ const Stats = ({ activeCount }) => {
           </div>
         </div>
 
-        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
+        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
           <div className="bg-primary/10 rounded-full p-3">
             <BiLeaf color="green" size={32} />
           </div>
@@ -34,7 +34,7 @@ const Stats = ({ activeCount }) => {
           </div>
         </div>
 
-        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
+        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
           <div className="bg-primary/10 rounded-full p-3">
             <GoPeople color="green" size={32} />
           </div>

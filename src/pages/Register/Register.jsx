@@ -6,7 +6,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Register = () => {
-  const { createUser, updateUser, setUser, signinwithGoogle, loading } =
+  const { createUser, updateUser, setUser, signinwithGoogle, loading, setLoading } =
     use(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -40,10 +40,12 @@ const Register = () => {
           .catch((err) => {
             setUser(user);
             toast.error(err.code);
+            setLoading(false);
           });
       })
       .catch((err) => {
         toast.error(err.code);
+        setLoading(false);
       });
   };
 
@@ -55,6 +57,7 @@ const Register = () => {
       })
       .catch((err) => {
         toast.error(err.code);
+        setLoading(false);
       });
   };
   return (
@@ -133,9 +136,8 @@ const Register = () => {
           )}
 
           <button
-            className={`btn ${
-              loading ? "bg-white" : "btn-primary"
-            } mt-4 w-full`}
+            className={`btn ${loading ? "bg-white" : "btn-primary"
+              } mt-4 w-full`}
           >
             {loading ? <LoadingSpinner /> : "Register"}
           </button>

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Login = () => {
-  const { login, signinwithGoogle, loading } = use(AuthContext);
+  const { login, signinwithGoogle, loading, setLoading } = use(AuthContext);
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
@@ -33,6 +33,7 @@ const Login = () => {
       })
       .catch((err) => {
         toast.error(err.code);
+        setLoading(false);
       });
   };
 
@@ -44,6 +45,7 @@ const Login = () => {
       })
       .catch((err) => {
         toast.error(err.code);
+        setLoading(false);
       });
   };
 
@@ -111,9 +113,8 @@ const Login = () => {
           )}
 
           <button
-            className={`btn ${
-              loading ? "bg-white" : "btn-primary"
-            } mt-4 w-full`}
+            className={`btn ${loading ? "bg-white" : "btn-primary"
+              } mt-4 w-full`}
           >
             {loading ? <LoadingSpinner /> : "Login"}
           </button>

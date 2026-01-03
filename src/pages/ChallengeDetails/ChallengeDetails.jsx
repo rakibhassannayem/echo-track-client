@@ -88,18 +88,17 @@ const ChallengeDetails = () => {
           alt={title}
           className="w-full h-full object-cover rounded-2xl"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-white via-white/50 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-base-100 via-white/50 to-transparent" />
       </div>
 
       <div className="container mx-auto px-4 -mt-70 relative z-10">
         <div className="max-w-4xl mx-auto rounded-xl">
-          <Link to={"/challenges"}>
-            <button className="btn btn-ghost border-0 text-lg font-bold mb-4 flex items-center hover:-translate-x-3 transition">
-              <BsArrowLeft size={18} />
-              Back to Challenges
-            </button>
+          <Link to={"/challenges"} className="btn btn-ghost border text-lg font-bold text-black mb-4 flex items-center hover:-translate-x-3 transition hover:text-primary w-fit">
+            <BsArrowLeft size={18} />
+            Back to Challenges
           </Link>
-          <div className="rounded-xl shadow-lg p-8 mb-8 bg-white">
+          
+          <div className="rounded-xl shadow-lg p-8 mb-8 bg-base-100">
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
                 <div className="badge font-medium bg-primary  text-white mb-3">

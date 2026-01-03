@@ -53,9 +53,9 @@ const MyActivities = () => {
 
       {/* stats */}
       <div className="flex flex-col md:flex-row justify-between gap-5 py-5">
-        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
+        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-base-300 ">
           <div className="bg-primary/10 rounded-full p-3">
-            <BiLeaf color="green" size={32} />
+            <BiLeaf className="text-success" size={32} />
           </div>
           <div>
             <p className="text-3xl font-bold">2,450 kg</p>
@@ -63,9 +63,9 @@ const MyActivities = () => {
           </div>
         </div>
 
-        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
+        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-base-300 ">
           <div className="bg-primary/10 rounded-full p-3">
-            <IoTrashBinOutline color="green" size={32} />
+            <IoTrashBinOutline className="text-success" size={32} />
           </div>
           <div>
             <p className="text-3xl font-bold">2,450 kg</p>
@@ -73,9 +73,9 @@ const MyActivities = () => {
           </div>
         </div>
 
-        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
+        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-base-300 ">
           <div className="bg-primary/10 rounded-full p-3">
-            <SlGraph color="green" size={32} />
+            <SlGraph className="text-success" size={32} />
           </div>
           <div>
             <p className="text-3xl font-bold">{challengeCount}</p>
@@ -83,9 +83,9 @@ const MyActivities = () => {
           </div>
         </div>
 
-        <div className="bg-white flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200">
+        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-base-300">
           <div className="bg-primary/10 rounded-full p-3">
-            <LuBadgeCheck color="green" size={32} />
+            <LuBadgeCheck className="text-success" size={32} />
           </div>
           <div>
             <p className="text-3xl font-bold">{completedCount}</p>

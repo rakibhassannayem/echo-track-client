@@ -28,7 +28,7 @@ const ChallengeCard = ({ challenge }) => {
         <div>
           <div className="card-title justify-between group-hover:text-green-500">
             <span className="font-bold">{title}</span>
-            <div className="bg-green-50 text-secondary rounded-full px-3 py-1 text-sm">
+            <div className="bg-primary/10 text-secondary rounded-full px-3 py-1 text-sm">
               {category}
             </div>
           </div>

@@ -38,15 +38,14 @@ const MyActivitiesCard = ({ challenge }) => {
   };
 
   return (
-    <div className="bg-white py-5 px-3 w-full rounded-xl border border-gray-200 ">
+    <div className="bg-base-100 py-5 px-3 w-full rounded-xl border border-base-300 ">
       <div className="flex gap-3 items-center">
         <h3 className="text-xl font-semibold">{title}</h3>
         <span
-          className={`${
-            status == "Ongoing"
+          className={`${status == "Ongoing"
               ? "bg-primary/90 text-white"
               : "bg-yellow-300 text-secondary"
-          } px-3 py-0.5 rounded-full font-medium text-sm`}
+            } px-3 py-0.5 rounded-full font-medium text-sm`}
         >
           {status}
         </span>
