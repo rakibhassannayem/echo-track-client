@@ -106,9 +106,7 @@ const Login = () => {
 
           {error && (
             <p className="text-red-500 font-medium">
-              Password must be at least 6 characters long and include at least
-              one uppercase letter, one lowercase letter, and one special
-              character.
+              Password must be at least 6 characters long and include at least one <br />uppercase letter, one lowercase letter, and one special character.
             </p>
           )}
 

@@ -58,7 +58,7 @@ const UpdateChallenge = () => {
 
   return (
     <div className="py-3 rounded-lg">
-      <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-5">
+      <div className="max-w-3xl mx-auto bg-base-100 shadow-md rounded-lg p-5">
         {/* Header */}
         <div className="mb-4">
           <h1 className="text-3xl font-bold flex items-center gap-2">

@@ -97,7 +97,7 @@ const ChallengeDetails = () => {
             <BsArrowLeft size={18} />
             Back to Challenges
           </Link>
-          
+
           <div className="rounded-xl shadow-lg p-8 mb-8 bg-base-100">
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
@@ -142,7 +142,7 @@ const ChallengeDetails = () => {
                   <GoGoal color="green" size={32} />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-medium text-gray-600">{target}</span>
+                  <span className="font-medium">{target}</span>
                   <p className="text-secondary">Goal</p>
                 </div>
               </div>
