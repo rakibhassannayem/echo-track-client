@@ -74,7 +74,7 @@ const Challenges = () => {
       </div>
 
       {loading ? (
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           <SkeletonLoading />
           <SkeletonLoading />
           <SkeletonLoading />
@@ -82,7 +82,7 @@ const Challenges = () => {
           <SkeletonLoading />
         </div>
       ) : (
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {challenges.length > 0 ? (
             challenges.map((challenge) => (
               <ChallengeCard key={challenge._id} challenge={challenge} />
