@@ -1,10 +1,11 @@
 import { BiLeaf } from "react-icons/bi";
 import { FaTasks } from "react-icons/fa";
 import { GoPeople } from "react-icons/go";
+import { MdOutlineEvent } from "react-icons/md";
 
-const Stats = ({ activeCount }) => {
+const Stats = ({ activeCount, eventsCount, membersCount }) => {
   return (
-    <div className="py-10 rounded-xl">
+    <div>
       <div className=" text-center">
         <h2 className="headings">Our Community Impact</h2>
         <p className="text-secondary mt-2">
@@ -26,11 +27,11 @@ const Stats = ({ activeCount }) => {
 
         <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-gray-200 ">
           <div className="bg-primary/10 rounded-full p-3">
-            <BiLeaf color="green" size={32} />
+            <MdOutlineEvent color="green" size={32} />
           </div>
           <div>
-            <p className="text-3xl font-bold">2,450 kg</p>
-            <p className="text-secondary">CO₂ Saved</p>
+            <p className="text-3xl font-bold">{eventsCount}</p>
+            <p className="text-secondary">Upcoming Events</p>
           </div>
         </div>
 
@@ -39,8 +40,8 @@ const Stats = ({ activeCount }) => {
             <GoPeople color="green" size={32} />
           </div>
           <div>
-            <p className="text-3xl font-bold">850</p>
-            <p className="text-secondary">Active Members</p>
+            <p className="text-3xl font-bold">{membersCount}</p>
+            <p className="text-secondary">Members</p>
           </div>
         </div>
       </div>

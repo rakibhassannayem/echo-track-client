@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { toast } from "react-toastify";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 const Navbar = () => {
   const { user, setUser, logOut, loading } = use(AuthContext);
@@ -78,6 +79,19 @@ const Navbar = () => {
           </li>
         </>
       )}
+
+      <li>
+        <NavLink
+          to={"/about"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-primary text-white font-bold"
+              : "font-medium hover:bg-primary hover:text-white hover:font-bold"
+          }
+        >
+          About Us
+        </NavLink>
+      </li>
     </>
   );
 
@@ -114,7 +128,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="container mx-auto flex">
         <div className="navbar-start">
           <div className="dropdown">
@@ -178,7 +192,8 @@ const Navbar = () => {
                     }
                   />
                 </div>
-                <p className="font-semibold">{user.displayName}</p>
+                <p className="font-semibold flex items-center">{user.displayName}<IoMdArrowDropdown size={20} />
+                </p>
               </div>
               <ul
                 tabIndex="-1"

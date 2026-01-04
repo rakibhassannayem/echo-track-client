@@ -4,80 +4,67 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <div className="bg-base-100 border-t border-t-emerald-500 px-3">
-      <footer className="footer sm:footer-horizontal py-10 container mx-auto justify-between">
+    <div className="bg-base-200">
+      <footer className="footer container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between gap-12">
+        {/* Brand Section */}
         <div>
-          <Link
-            to={"/"}
-            className="btn p-0 btn-ghost text-xl flex items-center"
-          >
-            <img className="w-12" src="/logo.png" alt="" />
-            <span className="text-xl font-bold">EcoTrack</span>
+          <Link to="/" className="flex items-center gap-2 mb-4 group">
+            <img className="w-10 group-hover:rotate-12 transition-transform" src="/logo.png" alt="EcoTrack" />
+            <span className="text-2xl font-bold tracking-tight">EcoTrack</span>
           </Link>
-
-          <p className="">
-            Join our community in making sustainable living
-            <br /> accessible and measurable
+          <p className="text-secondary leading-relaxed max-w-sm">
+            Join our global community in making sustainable living accessible, measurable, and impactful for everyone.
           </p>
+          <div className="flex gap-4 mt-6">
+            {[
+              { icon: <FaXTwitter size={20} />, href: "https://x.com/RakibHassanNay1" },
+              { icon: <FaFacebookF size={20} />, href: "https://www.facebook.com/rhnayem23" },
+              { icon: <FaInstagram size={20} />, href: "https://www.instagram.com/nayem.23_" },
+            ].map((social, i) => (
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-circle btn-sm btn-ghost hover:bg-primary/10 hover:text-primary transition-all"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
 
-        <nav>
-          <h6 className="footer-title">Quick Links</h6>
-          <a className="link link-hover">About</a>
-          <a className="link link-hover">Contact</a>
+        {/* Quick Links */}
+        <nav className="flex flex-col gap-3">
+          <h6 className="footer-title opacity-100 font-bold mb-2">Explore</h6>
+          <Link to="/" className="link link-hover text-secondary hover:text-primary transition-colors">Home</Link>
+          <Link to="/about" className="link link-hover text-secondary hover:text-primary transition-colors">About Us</Link>
+          <Link to="/challenges" className="link link-hover text-secondary hover:text-primary transition-colors">Challenges</Link>
+          <Link to="/add-challenge" className="link link-hover text-secondary hover:text-primary transition-colors">Add Challenge</Link>
         </nav>
 
-        <nav>
-          <h6 className="footer-title">Social</h6>
-          <div className="grid grid-flow-col gap-4">
-            <a
-              href="https://x.com/RakibHassanNay1"
-              target="_blank"
-              className="cursor-pointer hover:scale-130 transition"
-            >
-              <FaXTwitter size={18} />
-            </a>
-            <a
-              href="https://web.facebook.com/rakibhassannayem26"
-              target="_blank"
-              className="cursor-pointer hover:scale-130 transition"
-            >
-              <FaFacebookF size={18} />
-            </a>
-            <a
-              href="https://www.instagram.com/rakibhassan_nayem"
-              target="_blank"
-              className="cursor-pointer hover:scale-130 transition"
-            >
-              <FaInstagram size={19} />
-            </a>
-          </div>
+        {/* Account & Community */}
+        <nav className="flex flex-col gap-3">
+          <h6 className="footer-title opacity-100 font-bold mb-2">Community</h6>
+          <Link to="/my-activities" className="link link-hover text-secondary hover:text-primary transition-colors">My Activities</Link>
+          <Link to="/my-challenges" className="link link-hover text-secondary hover:text-primary transition-colors">My Challenges</Link>
+          <Link to="/login" className="link link-hover text-secondary hover:text-primary transition-colors">Login</Link>
+          <Link to="/register" className="link link-hover text-secondary hover:text-primary transition-colors">Register</Link>
         </nav>
       </footer>
 
-      <div className="container mx-auto text-center pb-10 text-sm flex flex-col items-center gap-3">
-        <p>
-          Accessibility: This site has theme changing feature for dark and light
-          mode. For help, email
-          <a
-            href="mailto:rakibhassannayem@gmail.com"
-            className="link link-hover ml-1"
-          >
-            rakibhassannayem@gmail.com
-          </a>
-          .
-        </p>
-        <div className="flex gap-4">
-          <a href="/privacy" className="link link-hover">
-            Privacy
-          </a>
-          <a href="/terms" className="link link-hover">
-            Terms
-          </a>
+      {/* Bottom Footer */}
+      <div className="border-t border-base-300">
+        <div className="container mx-auto px-6 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+            <p className="text-secondary text-sm">
+              Copyright © {new Date().getFullYear()} <span className="font-bold">EcoTrack</span>. All rights reserved.
+            </p>
+            <p className="text-secondary/70 text-xs max-w-md">
+              Accessibility Note: Use the theme switcher in the navigation bar to toggle between light and dark modes for better visibility.
+            </p>
+          </div>
         </div>
-        <p>
-          Copyright © {new Date().getFullYear()} EcoTrack - All right reserved
-        </p>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import ActivityDetails from "../pages/ActivityDetails/ActivityDetails";
 import MyChallenges from "../pages/MyChallenges/MyChallenges";
 import UpdateChallenge from "../pages/UpdateChallenge/UpdateChallenge";
 import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
+import About from "../pages/About/About";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/challenges",

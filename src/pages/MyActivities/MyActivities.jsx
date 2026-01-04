@@ -55,26 +55,6 @@ const MyActivities = () => {
       <div className="flex flex-col md:flex-row justify-between gap-5 py-5">
         <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-base-300 ">
           <div className="bg-primary/10 rounded-full p-3">
-            <BiLeaf className="text-success" size={32} />
-          </div>
-          <div>
-            <p className="text-3xl font-bold">2,450 kg</p>
-            <p className="text-secondary">CO₂ Saved</p>
-          </div>
-        </div>
-
-        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-base-300 ">
-          <div className="bg-primary/10 rounded-full p-3">
-            <IoTrashBinOutline className="text-success" size={32} />
-          </div>
-          <div>
-            <p className="text-3xl font-bold">2,450 kg</p>
-            <p className="text-secondary">Plastic Reduced</p>
-          </div>
-        </div>
-
-        <div className="bg-base-100 flex gap-2 items-center py-5 pl-3 w-full rounded-xl border border-base-300 ">
-          <div className="bg-primary/10 rounded-full p-3">
             <SlGraph className="text-success" size={32} />
           </div>
           <div>
