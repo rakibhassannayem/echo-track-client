@@ -50,6 +50,7 @@ const UpdateChallenge = () => {
       .then((res) => res.json())
       .then(() => {
         toast.success("challenge updated successfully!");
+        navigate("/dashboard/my-challenges");
       })
       .catch(() => {
         toast.error("Failed to update the challenge!");
@@ -208,7 +209,7 @@ const UpdateChallenge = () => {
             </button>
             <button
               type="button"
-              onClick={() => navigate("/my-challenges")}
+              onClick={() => navigate("/dashboard/my-challenges")}
               className="flex-1 btn"
             >
               Cancel

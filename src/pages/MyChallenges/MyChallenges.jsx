@@ -38,7 +38,7 @@ const MyChallenges = () => {
             Challenges you've created for the community
           </p>
         </div>
-        <Link to={"/add-challenge"}>
+        <Link to={"/dashboard/add-challenge"}>
           <button className="btn bg-primary text-white font-bold flex items-center">
             <BiPlus size={30} />
             Add New Challenge

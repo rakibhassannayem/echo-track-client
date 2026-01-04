@@ -21,19 +21,22 @@ const MyActivitiesCard = ({ challenge }) => {
     e.preventDefault();
 
     fetch(
-      `https://echo-track-server.vercel.app/userChallenges/${challengeId}`,
+      `https://echo-track-server.vercel.app/userChallenges/${user_id}`,
       {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ progress: 1 })
       }
     )
       .then((res) => res.json())
-      .then(() => {
-        setProgressCount((prev) => prev + 1);
-        toast.success("updated Successfully!");
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          setProgressCount((prev) => prev + 1);
+          toast.success("Progress updated Successfully!");
+        }
       })
       .catch(() => {
-        toast.error("Failed to update participants!");
+        toast.error("Failed to update progress!");
       });
   };
 
@@ -43,8 +46,8 @@ const MyActivitiesCard = ({ challenge }) => {
         <h3 className="text-xl font-semibold">{title}</h3>
         <span
           className={`${status == "Ongoing"
-              ? "bg-primary/90 text-white"
-              : "bg-yellow-300 text-secondary"
+            ? "bg-primary/90 text-white"
+            : "bg-yellow-300 text-secondary"
             } px-3 py-0.5 rounded-full font-medium text-sm`}
         >
           {status}
@@ -73,7 +76,7 @@ const MyActivitiesCard = ({ challenge }) => {
           </button>
         )}
 
-        <Link to={`/my-activities/${user_id}`} className="btn">
+        <Link to={`/dashboard/my-activities/${user_id}`} className="btn">
           View Details
         </Link>
       </div>

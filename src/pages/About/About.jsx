@@ -11,8 +11,8 @@ const About = () => {
           <RiEarthFill className="w-4 h-4" />
           <span>Tracking Our Path to Sustainability</span>
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold text-base-content leading-tight">
-          Empowering Communities to <span className="text-primary italic">Echo Change</span>
+        <h1 className="text-4xl md:text-5xl font-bold text-base-content leading-tight">
+          Empowering Communities to <span className="text-primary">Echo Change</span>
         </h1>
         <p className="text-lg text-secondary leading-relaxed max-w-2xl mx-auto">
           Echo Track is more than just a tracking tool; it's a movement dedicated to making sustainable living accessible, engaging, and impactful for everyone.
@@ -118,7 +118,7 @@ const About = () => {
       {/* Contact Section */}
       <section className="bg-primary text-white rounded-3xl p-10 md:p-16 text-center space-y-8">
         <div className="max-w-2xl mx-auto space-y-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-white">Ready to make an echo?</h2>
+          <h2 className="headings text-white">Ready to make an echo?</h2>
           <p className="text-primary-content/80 text-lg">
             Join thousands of others who are already tracking their journey towards a better planet. Every small action counts.
           </p>

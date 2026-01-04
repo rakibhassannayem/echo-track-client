@@ -52,32 +52,18 @@ const Navbar = () => {
       </li>
 
       {user && (
-        <>
-          <li>
-            <NavLink
-              to={"/my-activities"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-bold"
-                  : "font-medium hover:bg-primary hover:text-white hover:font-bold"
-              }
-            >
-              My Activites
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/add-challenge"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-bold"
-                  : "font-medium hover:bg-primary hover:text-white hover:font-bold"
-              }
-            >
-              Add Challenge
-            </NavLink>
-          </li>
-        </>
+        <li>
+          <NavLink
+            to={"/dashboard"}
+            className={({ isActive }) =>
+              isActive
+                ? "bg-primary text-white font-bold"
+                : "font-medium hover:bg-primary hover:text-white hover:font-bold"
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
       )}
 
       <li>
@@ -92,6 +78,18 @@ const Navbar = () => {
           About Us
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to={"/contact"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-primary text-white font-bold"
+              : "font-medium hover:bg-primary hover:text-white hover:font-bold"
+          }
+        >
+          Contact Us
+        </NavLink>
+      </li>
     </>
   );
 
@@ -100,16 +98,28 @@ const Navbar = () => {
       {user && (
         <>
           <li>
-            <NavLink
-              to={"/my-challenges"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-bold"
-                  : "font-medium hover:bg-primary hover:text-white hover:font-bold"
-              }
+            <Link
+              to={"/dashboard"}
+              className="font-medium hover:bg-primary hover:text-white"
             >
-              My Challenge
-            </NavLink>
+              Dashboard Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/dashboard/profile"}
+              className="font-medium hover:bg-primary hover:text-white"
+            >
+              My Profile
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/dashboard/my-challenges"}
+              className="font-medium hover:bg-primary hover:text-white"
+            >
+              My Challenges
+            </Link>
           </li>
         </>
       )}

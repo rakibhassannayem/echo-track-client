@@ -25,7 +25,7 @@ const ActivityDetails = () => {
   return (
     <div className="max-w-4xl  mx-auto rounded-xl">
       <Link
-        to={"/my-activities"}
+        to={"/dashboard/my-activities"}
         className="text-lg font-bold mb-4 flex gap-1 items-center hover:-translate-x-3 transition cursor-pointer"
       >
         <BsArrowLeft size={18} />

@@ -69,6 +69,7 @@ const ChallengeDetails = () => {
           .then(() => {
             setParticipantsCount((prev) => prev + 1);
             toast.success("Joined Successfully!");
+            navigate("/dashboard/my-activities");
           })
           .catch(() => {
             toast.error("Failed to update participants!");

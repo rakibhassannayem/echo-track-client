@@ -40,14 +40,14 @@ const Footer = () => {
           <Link to="/" className="link link-hover text-secondary hover:text-primary transition-colors">Home</Link>
           <Link to="/about" className="link link-hover text-secondary hover:text-primary transition-colors">About Us</Link>
           <Link to="/challenges" className="link link-hover text-secondary hover:text-primary transition-colors">Challenges</Link>
-          <Link to="/add-challenge" className="link link-hover text-secondary hover:text-primary transition-colors">Add Challenge</Link>
+          <Link to="/dashboard/add-challenge" className="link link-hover text-secondary hover:text-primary transition-colors">Add Challenge</Link>
         </nav>
 
         {/* Account & Community */}
         <nav className="flex flex-col gap-3">
           <h6 className="footer-title opacity-100 font-bold mb-2">Community</h6>
-          <Link to="/my-activities" className="link link-hover text-secondary hover:text-primary transition-colors">My Activities</Link>
-          <Link to="/my-challenges" className="link link-hover text-secondary hover:text-primary transition-colors">My Challenges</Link>
+          <Link to="/dashboard/my-activities" className="link link-hover text-secondary hover:text-primary transition-colors">My Activities</Link>
+          <Link to="/dashboard/my-challenges" className="link link-hover text-secondary hover:text-primary transition-colors">My Challenges</Link>
           <Link to="/login" className="link link-hover text-secondary hover:text-primary transition-colors">Login</Link>
           <Link to="/register" className="link link-hover text-secondary hover:text-primary transition-colors">Register</Link>
         </nav>

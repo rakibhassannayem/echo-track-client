@@ -75,7 +75,7 @@ const MyChallengeCard = ({ challenge, deleteChallenge }) => {
         </div>
         <div className="flex gap-3">
           <Link
-            to={`/update-challenge/${_id}`}
+            to={`/dashboard/update-challenge/${_id}`}
             className="btn rounded-lg flex-1"
           >
             <FiEdit />

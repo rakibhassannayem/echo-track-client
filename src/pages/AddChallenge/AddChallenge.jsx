@@ -37,7 +37,7 @@ const AddChallenge = () => {
       .then((res) => res.json())
       .then(() => {
         toast.success("challenge added successfully!");
-        navigate("/my-challenges");
+        navigate("/dashboard/my-challenges");
       })
       .catch(() => {
         toast.error("Failed to add the challenge!");
@@ -189,7 +189,7 @@ const AddChallenge = () => {
             </button>
             <button
               type="button"
-              onClick={() => navigate("/my-challenges")}
+              onClick={() => navigate("/dashboard/my-challenges")}
               className="flex-1 btn"
             >
               Cancel
