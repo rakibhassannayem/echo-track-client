@@ -70,7 +70,7 @@ const Register = () => {
         </p>
       </div>
 
-      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box min-w-1/3 mt-5 border p-4 pt-2">
+      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box min-w-1/3 max-w-1/2 mt-5 border p-4 pt-2">
         <div className="mb-2">
           <h3 className="headings text-xl!">Create Account</h3>
           <p className="text-secondary text-sm">
