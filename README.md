@@ -1,5 +1,7 @@
 # EcoTrack
 
+![EcoTrack Homepage Screenshot](public/screenshots/ecoTrack.png)
+
 # EcoTrack (Echo Track Client)
 
 Live site (client): https://ecotrack-dd506.web.app  
